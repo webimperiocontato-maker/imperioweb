@@ -39,9 +39,9 @@ const Contacto = () => {
         <html lang={language === "pt" ? "pt-PT" : "en"} />
         <title>{t("contactPage.metaTitle")}</title>
         <meta name="description" content={t("contactPage.metaDescription")} />
-        <link rel="canonical" href="https://imperioweb.pt/contacto" />
-        <link rel="alternate" hrefLang="pt-PT" href="https://imperioweb.pt/contacto" />
-        <link rel="alternate" hrefLang="en" href="https://imperioweb.pt/contacto" />
+        <link rel="canonical" href="https://imperioweb.eu/contacto" />
+        <link rel="alternate" hrefLang="pt-PT" href="https://imperioweb.eu/contacto" />
+        <link rel="alternate" hrefLang="en" href="https://imperioweb.eu/contacto" />
         <meta property="og:locale" content={language === "pt" ? "pt_PT" : "en_US"} />
       </Helmet>
       <Layout>

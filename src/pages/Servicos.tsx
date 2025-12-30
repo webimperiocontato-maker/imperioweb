@@ -95,9 +95,9 @@ const Servicos = () => {
         <html lang={language === "pt" ? "pt-PT" : "en"} />
         <title>{t("servicesPage.metaTitle")}</title>
         <meta name="description" content={t("servicesPage.metaDescription")} />
-        <link rel="canonical" href="https://imperioweb.pt/servicos" />
-        <link rel="alternate" hrefLang="pt-PT" href="https://imperioweb.pt/servicos" />
-        <link rel="alternate" hrefLang="en" href="https://imperioweb.pt/servicos" />
+        <link rel="canonical" href="https://imperioweb.eu/servicos" />
+        <link rel="alternate" hrefLang="pt-PT" href="https://imperioweb.eu/servicos" />
+        <link rel="alternate" hrefLang="en" href="https://imperioweb.eu/servicos" />
         <meta property="og:locale" content={language === "pt" ? "pt_PT" : "en_US"} />
       </Helmet>
       <Layout>
