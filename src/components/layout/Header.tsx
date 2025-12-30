@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import logoCrown from "@/assets/logo-crown.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -41,14 +42,10 @@ const Header = () => {
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="flex items-center gap-1">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg font-display">I</span>
-            </div>
-            <span className="text-xl font-bold font-display text-foreground">
-              Império <span className="text-gradient">Web</span>
-            </span>
-          </div>
+          <img src={logoCrown} alt="Império Web" className="w-8 h-8" />
+          <span className="text-xl font-bold font-display text-foreground">
+            Império <span className="text-gradient">Web</span>
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
