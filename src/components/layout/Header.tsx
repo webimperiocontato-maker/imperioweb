@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import crownLogo from "@/assets/crown-logo.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -41,12 +42,15 @@ const Header = () => {
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="flex items-center gap-1">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg font-display">I</span>
-            </div>
-            <span className="text-xl font-bold font-display text-foreground">
-              Império <span className="text-gradient">Web</span>
+          <div className="flex items-center gap-2">
+            <img 
+              src={crownLogo} 
+              alt="Império Web Logo" 
+              className="w-8 h-8 object-contain"
+              style={{ filter: 'brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(1728%) hue-rotate(199deg) brightness(101%) contrast(101%)' }}
+            />
+            <span className="text-xl font-bold font-display text-primary">
+              Império <span className="text-primary">Web</span>
             </span>
           </div>
         </Link>
