@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -15,6 +15,10 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+
+  const whatsappMessage = encodeURIComponent(
+    "Olá! Tenho um negócio local e gostaria de saber como funciona a criação de um site para gerar mais contactos."
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,11 +72,12 @@ const Header = () => {
         <div className="hidden md:block">
           <Button variant="hero" size="default" asChild>
             <a
-              href="https://wa.me/351910000000?text=Olá! Gostaria de pedir um orçamento."
+              href={`https://wa.me/351910000000?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Pedir Orçamento
+              Falar com Especialista
+              <ArrowRight size={16} />
             </a>
           </Button>
         </div>
@@ -110,13 +115,13 @@ const Header = () => {
                   {link.name}
                 </Link>
               ))}
-              <Button variant="hero" size="lg" className="mt-2" asChild>
+              <Button variant="whatsapp" size="lg" className="mt-2" asChild>
                 <a
-                  href="https://wa.me/351910000000?text=Olá! Gostaria de pedir um orçamento."
+                  href={`https://wa.me/351910000000?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Pedir Orçamento
+                  Quero um Site que Venda
                 </a>
               </Button>
             </nav>
