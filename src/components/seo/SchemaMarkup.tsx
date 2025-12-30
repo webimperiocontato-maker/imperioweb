@@ -12,15 +12,15 @@ const SchemaMarkup = ({ includeFAQ = false }: SchemaMarkupProps) => {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://imperioweb.pt/#organization",
+    "@id": "https://imperioweb.eu/#organization",
     name: t("schema.businessName"),
-    alternateName: "Império Web",
+    alternateName: ["Império Web", "ImperioWeb", "Império Web EU"],
     description: t("schema.businessDescription"),
-    url: "https://imperioweb.pt",
-    logo: "https://imperioweb.pt/logo.png",
-    image: "https://imperioweb.pt/og-image.jpg",
+    url: "https://imperioweb.eu",
+    logo: "https://imperioweb.eu/logo.png",
+    image: "https://imperioweb.eu/og-image.jpg",
     telephone: "+351910000000",
-    email: "info@imperioweb.pt",
+    email: "info@imperioweb.eu",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Costa da Caparica",
@@ -62,8 +62,8 @@ const SchemaMarkup = ({ includeFAQ = false }: SchemaMarkupProps) => {
       closes: "18:00",
     },
     sameAs: [
-      "https://www.instagram.com/imperioweb.pt",
-      "https://www.facebook.com/imperioweb.pt",
+      "https://www.instagram.com/imperioweb.eu",
+      "https://www.facebook.com/imperioweb.eu",
       "https://www.linkedin.com/company/imperioweb",
     ],
   };
@@ -227,13 +227,10 @@ const SchemaMarkup = ({ includeFAQ = false }: SchemaMarkupProps) => {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://imperioweb.eu/#website",
     name: "Império Web",
-    url: "https://imperioweb.pt",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://imperioweb.pt/servicos?q={search_term_string}",
-      "query-input": "required name=search_term_string",
-    },
+    alternateName: ["ImperioWeb", "Império Web EU"],
+    url: "https://imperioweb.eu",
   };
 
   return (

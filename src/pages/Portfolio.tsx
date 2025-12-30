@@ -144,11 +144,11 @@ const Portfolio = () => {
         <html lang={language === "pt" ? "pt-PT" : "en"} />
         <title>{t("portfolioPage.metaTitle")}</title>
         <meta name="description" content={t("portfolioPage.metaDescription")} />
-        <link rel="canonical" href="https://imperioweb.pt/portfolio" />
+        <link rel="canonical" href="https://imperioweb.eu/portfolio" />
         <meta property="og:title" content={t("portfolioPage.metaTitle")} />
         <meta property="og:description" content={t("portfolioPage.metaDescription")} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://imperioweb.pt/portfolio" />
+        <meta property="og:url" content="https://imperioweb.eu/portfolio" />
         <meta name="robots" content="index, follow" />
       </Helmet>
 

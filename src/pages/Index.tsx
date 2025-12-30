@@ -24,16 +24,16 @@ const Index = () => {
         <title>{t("seo.homeTitle")}</title>
         <meta name="description" content={t("seo.homeDescription")} />
         <meta name="keywords" content={t("seo.homeKeywords")} />
-        <link rel="canonical" href="https://imperioweb.pt" />
-        <link rel="alternate" hrefLang="pt-PT" href="https://imperioweb.pt" />
-        <link rel="alternate" hrefLang="en" href="https://imperioweb.pt" />
-        <link rel="alternate" hrefLang="x-default" href="https://imperioweb.pt" />
+        <link rel="canonical" href="https://imperioweb.eu/" />
+        <link rel="alternate" hrefLang="pt-PT" href="https://imperioweb.eu/" />
+        <link rel="alternate" hrefLang="en" href="https://imperioweb.eu/" />
+        <link rel="alternate" hrefLang="x-default" href="https://imperioweb.eu/" />
         
         {/* Open Graph */}
         <meta property="og:title" content={t("seo.homeTitle")} />
         <meta property="og:description" content={t("seo.homeDescription")} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://imperioweb.pt" />
+        <meta property="og:url" content="https://imperioweb.eu/" />
         <meta property="og:image" content="https://imperioweb.pt/og-image.jpg" />
         <meta property="og:locale" content={language === "pt" ? "pt_PT" : "en_US"} />
         <meta property="og:site_name" content="Império Web" />
