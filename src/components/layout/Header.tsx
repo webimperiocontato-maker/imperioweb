@@ -18,6 +18,7 @@ const Header = () => {
   const navLinks = [
     { name: t("common.home"), href: "/" },
     { name: t("common.services"), href: "/servicos" },
+    { name: t("common.portfolio"), href: "/portfolio" },
     { name: t("common.about"), href: "/sobre" },
     { name: t("common.contact"), href: "/contacto" },
   ];
