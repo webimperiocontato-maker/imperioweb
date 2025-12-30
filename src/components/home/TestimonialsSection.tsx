@@ -12,7 +12,6 @@ const TestimonialsSection = () => {
       business: t("testimonials.testimonial1Business"),
       location: t("testimonials.testimonial1Location"),
       result: t("testimonials.testimonial1Result"),
-      isPlaceholder: true,
     },
     {
       quote: t("testimonials.testimonial2Quote"),
@@ -20,7 +19,6 @@ const TestimonialsSection = () => {
       business: t("testimonials.testimonial2Business"),
       location: t("testimonials.testimonial2Location"),
       result: t("testimonials.testimonial2Result"),
-      isPlaceholder: true,
     },
     {
       quote: t("testimonials.testimonial3Quote"),
@@ -28,7 +26,6 @@ const TestimonialsSection = () => {
       business: t("testimonials.testimonial3Business"),
       location: t("testimonials.testimonial3Location"),
       result: t("testimonials.testimonial3Result"),
-      isPlaceholder: true,
     },
   ];
 
@@ -62,12 +59,6 @@ const TestimonialsSection = () => {
               transition={{ delay: index * 0.1 }}
               className="p-6 rounded-2xl bg-gradient-card border border-border relative"
             >
-              {testimonial.isPlaceholder && (
-                <span className="absolute top-3 right-3 px-2 py-0.5 rounded text-[10px] bg-muted text-muted-foreground">
-                  {t("testimonials.placeholderLabel")}
-                </span>
-              )}
-              
               <Quote size={28} className="text-primary/20 mb-4" />
               
               <div className="flex gap-0.5 mb-4">
