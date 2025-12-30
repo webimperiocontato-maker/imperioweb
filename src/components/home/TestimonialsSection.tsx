@@ -9,47 +9,49 @@ const TestimonialsSection = () => {
     {
       quote: t("testimonials.testimonial1Quote"),
       author: t("testimonials.testimonial1Author"),
-      role: t("testimonials.testimonial1Role"),
+      business: t("testimonials.testimonial1Business"),
       location: t("testimonials.testimonial1Location"),
+      result: t("testimonials.testimonial1Result"),
+      isPlaceholder: true,
     },
     {
       quote: t("testimonials.testimonial2Quote"),
       author: t("testimonials.testimonial2Author"),
-      role: t("testimonials.testimonial2Role"),
+      business: t("testimonials.testimonial2Business"),
       location: t("testimonials.testimonial2Location"),
+      result: t("testimonials.testimonial2Result"),
+      isPlaceholder: true,
     },
     {
       quote: t("testimonials.testimonial3Quote"),
       author: t("testimonials.testimonial3Author"),
-      role: t("testimonials.testimonial3Role"),
+      business: t("testimonials.testimonial3Business"),
       location: t("testimonials.testimonial3Location"),
+      result: t("testimonials.testimonial3Result"),
+      isPlaceholder: true,
     },
   ];
 
   return (
-    <section className="section-padding bg-gradient-subtle">
+    <section className="section-padding">
       <div className="container-custom">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
             {t("testimonials.badge")}
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-display mb-4">
-            {t("testimonials.headline")}{" "}
-            <span className="text-gradient">{t("testimonials.headlineHighlight")}</span>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-display mb-4">
+            {t("testimonials.headline")} <span className="text-gradient">{t("testimonials.headlineHighlight")}</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
             {t("testimonials.description")}
           </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
         <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
             <motion.div
@@ -58,40 +60,38 @@ const TestimonialsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-6 rounded-2xl bg-gradient-card border border-border"
+              className="p-6 rounded-2xl bg-gradient-card border border-border relative"
             >
-              <Quote size={32} className="text-primary/30 mb-4" />
+              {testimonial.isPlaceholder && (
+                <span className="absolute top-3 right-3 px-2 py-0.5 rounded text-[10px] bg-muted text-muted-foreground">
+                  {t("testimonials.placeholderLabel")}
+                </span>
+              )}
               
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
+              <Quote size={28} className="text-primary/20 mb-4" />
+              
+              <div className="flex gap-0.5 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} className="text-primary fill-primary" />
+                  <Star key={i} size={14} className="text-primary fill-primary" />
                 ))}
               </div>
 
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
                 "{testimonial.quote}"
               </p>
 
-              <div>
-                <p className="font-semibold text-foreground">{testimonial.author}</p>
-                <p className="text-sm text-muted-foreground">
-                  {testimonial.role} • {testimonial.location}
+              <div className="pt-4 border-t border-border">
+                <p className="font-semibold text-foreground text-sm">{testimonial.author}</p>
+                <p className="text-xs text-muted-foreground">
+                  {testimonial.business} • {testimonial.location}
+                </p>
+                <p className="text-xs text-primary mt-1 font-medium">
+                  {testimonial.result}
                 </p>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Future testimonials placeholder */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center text-sm text-muted-foreground mt-8"
-        >
-          {t("testimonials.ctaText")}
-        </motion.p>
       </div>
     </section>
   );
