@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import WhatsAppButton from "./WhatsAppButton";
+import MobileStickyBar from "./MobileStickyBar";
 
 interface LayoutProps {
   children: ReactNode;
@@ -14,6 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
       <main>{children}</main>
       <Footer />
       <WhatsAppButton />
+      <MobileStickyBar />
     </div>
   );
 };

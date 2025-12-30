@@ -1,16 +1,17 @@
-import { ArrowRight, MessageCircle, Check, Zap, Search, MousePointer } from "lucide-react";
+import { ArrowRight, MessageCircle, Check, Zap, Search, MousePointer, Clock, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
   const { t } = useLanguage();
-  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
+  const whatsappMessage = encodeURIComponent(t("whatsapp.meetingMessage"));
 
   const benefits = [
-    { icon: MousePointer, text: t("heroNew.benefit1") },
+    { icon: Search, text: t("heroNew.benefit1") },
     { icon: Zap, text: t("heroNew.benefit2") },
-    { icon: Search, text: t("heroNew.benefit3") },
+    { icon: MousePointer, text: t("heroNew.benefit3") },
+    { icon: Headphones, text: t("heroNew.benefit4") },
   ];
 
   const microProofs = [
@@ -47,9 +48,8 @@ const HeroSection = () => {
           >
             {/* H1 - Main Headline */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display leading-tight mb-6">
-              {t("heroNew.headline1")}{" "}
-              <span className="text-gradient">{t("heroNew.headlineHighlight")}</span>{" "}
-              {t("heroNew.headline2")}
+              {t("heroNew.headline1")}
+              <span className="text-gradient block mt-2">{t("heroNew.headlineHighlight")}</span>
             </h1>
 
             {/* Subheadline */}
@@ -57,20 +57,20 @@ const HeroSection = () => {
               {t("heroNew.subheadline")}
             </p>
 
-            {/* Benefits - 3 Bullets */}
+            {/* Benefits - 4 Bullets */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 mb-10"
+              className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 max-w-3xl mx-auto"
             >
               {benefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 border border-border"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-card/80 border border-border"
                 >
                   <benefit.icon size={16} className="text-primary flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">{benefit.text}</span>
+                  <span className="text-xs md:text-sm text-muted-foreground">{benefit.text}</span>
                 </div>
               ))}
             </motion.div>
@@ -80,7 +80,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
             >
               <Button variant="hero" size="xl" asChild>
                 <a href="#orcamento">
@@ -88,7 +88,7 @@ const HeroSection = () => {
                   <ArrowRight size={20} />
                 </a>
               </Button>
-              <Button variant="whatsapp" size="xl" asChild>
+              <Button variant="outline" size="xl" className="border-border hover:bg-card" asChild>
                 <a
                   href={`https://wa.me/351910000000?text=${whatsappMessage}`}
                   target="_blank"
@@ -100,12 +100,25 @@ const HeroSection = () => {
               </Button>
             </motion.div>
 
+            {/* Guarantee */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="flex items-center justify-center gap-2 mb-8"
+            >
+              <Clock size={16} className="text-primary" />
+              <span className="text-sm text-muted-foreground font-medium">
+                {t("heroNew.guarantee")}
+              </span>
+            </motion.div>
+
             {/* Micro Proofs */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
+              className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-6 border-t border-border/50"
             >
               {microProofs.map((proof, index) => (
                 <div key={index} className="flex items-center gap-2">
