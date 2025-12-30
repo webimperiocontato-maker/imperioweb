@@ -17,7 +17,7 @@
   "heroNew": {
     "headline1": "Sites e landing pages que geram",
     "headlineHighlight": "contactos",
-    "headline2": "para negócios locais em Lisboa e Margem Sul",
+    "headline2": "para negócios em Portugal e Europa",
     "subheadline": "Design premium + copy persuasiva + SEO local + rastreio de conversões. Entrega rápida e suporte dedicado.",
     "benefit1": "Mais pedidos no WhatsApp e formulários",
     "benefit2": "Rápido no mobile (Core Web Vitals)",
@@ -34,12 +34,12 @@
     "description": "Muitos negócios locais investem em sites que não trazem resultados. Sem estratégia de conversão, o investimento é perdido.",
     "pain1": "Site lento que afasta visitantes no mobile",
     "pain2": "Sem CTA claro — visitantes não sabem o que fazer",
-    "pain3": "Sem SEO local — invisível nas pesquisas da região"
+    "pain3": "Sem SEO — invisível nas pesquisas online"
   },
   "deliver": {
     "badge": "O Que Entregamos",
     "headline": "Soluções focadas em gerar contactos",
-    "description": "Criamos presença digital que converte visitantes em clientes para negócios locais.",
+    "description": "Criamos presença digital que converte visitantes em clientes para negócios em Portugal e Europa.",
     "service1Title": "Landing Pages de Captação",
     "service1Desc": "Páginas otimizadas para Google Ads e Meta Ads. Foco total em conversão e geração de leads qualificados.",
     "service2Title": "Sites Institucionais Profissionais",
@@ -86,7 +86,7 @@
   "portfolio": {
     "badge": "Portfólio",
     "headline": "Projetos que Geram Resultados",
-    "description": "Alguns exemplos de trabalhos desenvolvidos para negócios locais em Portugal.",
+    "description": "Alguns exemplos de trabalhos desenvolvidos para negócios em Portugal e Europa.",
     "viewMore": "Ver Mais Projetos",
     "project1Title": "Site para Restaurante",
     "project1Niche": "Restauração",
@@ -188,7 +188,7 @@
     "toastDescription": "Será redirecionado para o WhatsApp para enviar o seu pedido."
   },
   "footer": {
-    "description": "Agência digital especializada em criação de sites e landing pages focados em conversão para negócios locais em Portugal.",
+    "description": "Agência digital especializada em criação de sites e landing pages focados em conversão para negócios em Portugal e Europa.",
     "servicesTitle": "Serviços",
     "service1": "Landing Pages",
     "service2": "Sites Profissionais",
@@ -209,17 +209,17 @@
     "ariaLabel": "Selecionar idioma"
   },
   "seo": {
-    "homeTitle": "Sites e Landing Pages que Geram Contactos | Lisboa e Margem Sul | Império Web",
-    "homeDescription": "Criamos sites e landing pages focados em gerar contactos para negócios locais em Lisboa e Margem Sul. Design premium, SEO local e tracking de conversões. Desde 200€.",
-    "homeKeywords": "criação de sites lisboa, landing pages portugal, sites para negócios locais, seo local lisboa, agência digital margem sul, sites conversão"
+    "homeTitle": "Sites e Landing Pages que Geram Contactos | Portugal e Europa | Império Web",
+    "homeDescription": "Criamos sites e landing pages focados em gerar contactos para negócios em Portugal e Europa. Design premium, SEO e tracking de conversões. Desde 200€.",
+    "homeKeywords": "criação de sites portugal, landing pages europa, sites para negócios, seo portugal, agência digital europa, sites conversão"
   },
   "servicesPage": {
-    "metaTitle": "Serviços | Criação de Sites desde 200€ | Império Web Lisboa",
-    "metaDescription": "Criação de sites profissionais desde 200€ para negócios locais em Lisboa e Margem Sul. Landing pages, social media e SEO local. Contacte-nos.",
-    "badge": "Serviços para Negócios Locais",
+    "metaTitle": "Serviços | Criação de Sites desde 200€ | Império Web Portugal",
+    "metaDescription": "Criação de sites profissionais desde 200€ para negócios em Portugal e Europa. Landing pages, social media e SEO. Contacte-nos.",
+    "badge": "Serviços para Negócios",
     "headline": "Sites Profissionais",
     "headlineHighlight": "Desde 200€",
-    "description": "Criamos sites profissionais focados em gerar contactos via WhatsApp para negócios locais em Lisboa e Margem Sul.",
+    "description": "Criamos sites profissionais focados em gerar contactos via WhatsApp para negócios em Portugal e Europa.",
     "ctaButton": "Falar com um Especialista Agora",
     "mostPopular": "Mais Popular",
     "whatIsIncluded": "O que está incluído:",
@@ -230,7 +230,7 @@
     "readyCta": "Receber Proposta para o Meu Negócio",
     "service1Title": "Criação de Sites Profissionais",
     "service1Subtitle": "Sites institucionais e comerciais",
-    "service1Description": "Criamos sites profissionais a partir de 200€, focados em gerar contactos via WhatsApp para negócios locais.",
+    "service1Description": "Criamos sites profissionais a partir de 200€, focados em gerar contactos via WhatsApp para negócios em Portugal e Europa.",
     "service1Feature1": "Design responsivo para telemóvel e desktop",
     "service1Feature2": "Botão de contacto direto no WhatsApp",
     "service1Feature3": "Otimização SEO para aparecer no Google",
@@ -270,8 +270,8 @@
     "service4Price": "Consultoria"
   },
   "aboutPage": {
-    "metaTitle": "Sobre a Império Web | Agência Digital em Portugal",
-    "metaDescription": "Conheça a Império Web, agência digital especializada em criação de sites e soluções digitais para negócios em Lisboa e Margem Sul.",
+    "metaTitle": "Sobre a Império Web | Agência Digital em Portugal e Europa",
+    "metaDescription": "Conheça a Império Web, agência digital especializada em criação de sites e soluções digitais para negócios em Portugal e Europa.",
     "badge": "Sobre Nós",
     "headline": "Somos a",
     "headlineHighlight": "Império Web",
@@ -280,7 +280,7 @@
     "missionHeadlineHighlight": "Missão",
     "missionText1": "A Império Web nasceu da paixão por tecnologia e do desejo de ajudar pequenas empresas e negócios locais a prosperarem no mundo digital.",
     "missionText2": "Acreditamos que toda empresa, independentemente do tamanho, merece uma presença online profissional e eficaz. O nosso objetivo é democratizar o acesso a soluções digitais de qualidade, oferecendo serviços premium a preços acessíveis.",
-    "missionText3": "Com sede em Portugal, servimos clientes em Lisboa, Margem Sul e em toda a região, com planos de expansão para o Brasil e mercado internacional.",
+    "missionText3": "Com sede em Portugal, servimos clientes em todo o país e na Europa, com planos de expansão para o Brasil e mercado internacional.",
     "buildingFuture": "Construindo o Futuro Digital",
     "valuesTitle": "Os Nossos Valores",
     "valuesSubtitle": "O Que Nos",
@@ -300,8 +300,8 @@
     "ctaMessage": "Enviar Mensagem"
   },
   "contactPage": {
-    "metaTitle": "Contacto | Receber Proposta Gratuita | Império Web Lisboa",
-    "metaDescription": "Receba uma proposta gratuita para criação de sites em Lisboa e Margem Sul. Resposta em menos de 24 horas. Fale connosco no WhatsApp.",
+    "metaTitle": "Contacto | Receber Proposta Gratuita | Império Web Portugal",
+    "metaDescription": "Receba uma proposta gratuita para criação de sites em Portugal e Europa. Resposta em menos de 24 horas. Fale connosco no WhatsApp.",
     "badge": "Fale Connosco",
     "headline": "Receba uma",
     "headlineHighlight": "Proposta Gratuita",
@@ -311,7 +311,7 @@
     "talkDescription": "Estamos prontos para ajudar o seu negócio local a ter mais presença online e gerar mais contactos.",
     "locationTitle": "Localização",
     "locationText": "Lisboa, Portugal",
-    "locationSubText": "Servindo Lisboa e Margem Sul",
+    "locationSubText": "Servindo Portugal e Europa",
     "emailTitle": "Email",
     "whatsappTitle": "WhatsApp",
     "quickResponseTitle": "Resposta Mais Rápida?",

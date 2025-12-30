@@ -17,7 +17,7 @@
   "heroNew": {
     "headline1": "Websites and landing pages that generate",
     "headlineHighlight": "leads",
-    "headline2": "for local businesses in Lisbon and South Bank",
+    "headline2": "for businesses in Portugal and Europe",
     "subheadline": "Premium design + persuasive copy + local SEO + conversion tracking. Fast delivery and dedicated support.",
     "benefit1": "More WhatsApp and form inquiries",
     "benefit2": "Fast on mobile (Core Web Vitals)",
@@ -34,12 +34,12 @@
     "description": "Many local businesses invest in websites that don't bring results. Without a conversion strategy, the investment is wasted.",
     "pain1": "Slow website that drives visitors away on mobile",
     "pain2": "No clear CTA — visitors don't know what to do",
-    "pain3": "No local SEO — invisible in regional searches"
+    "pain3": "No SEO — invisible in online searches"
   },
   "deliver": {
     "badge": "What We Deliver",
     "headline": "Solutions focused on generating leads",
-    "description": "We create digital presence that converts visitors into customers for local businesses.",
+    "description": "We create digital presence that converts visitors into customers for businesses in Portugal and Europe.",
     "service1Title": "Lead Capture Landing Pages",
     "service1Desc": "Pages optimized for Google Ads and Meta Ads. Total focus on conversion and qualified lead generation.",
     "service2Title": "Professional Institutional Websites",
@@ -86,7 +86,7 @@
   "portfolio": {
     "badge": "Portfolio",
     "headline": "Projects that Generate Results",
-    "description": "Some examples of work developed for local businesses in Portugal.",
+    "description": "Some examples of work developed for businesses in Portugal and Europe.",
     "viewMore": "View More Projects",
     "project1Title": "Restaurant Website",
     "project1Niche": "Food & Beverage",
@@ -188,7 +188,7 @@
     "toastDescription": "You will be redirected to WhatsApp to send your request."
   },
   "footer": {
-    "description": "Digital agency specialized in creating websites and landing pages focused on conversion for local businesses in Portugal.",
+    "description": "Digital agency specialized in creating websites and landing pages focused on conversion for businesses in Portugal and Europe.",
     "servicesTitle": "Services",
     "service1": "Landing Pages",
     "service2": "Professional Websites",
@@ -209,17 +209,17 @@
     "ariaLabel": "Select language"
   },
   "seo": {
-    "homeTitle": "Websites and Landing Pages that Generate Leads | Lisbon & South Bank | Império Web",
-    "homeDescription": "We create websites and landing pages focused on generating leads for local businesses in Lisbon and South Bank. Premium design, local SEO, and conversion tracking. From €200.",
-    "homeKeywords": "website creation lisbon, landing pages portugal, websites for local businesses, local seo lisbon, digital agency south bank, conversion websites"
+    "homeTitle": "Websites and Landing Pages that Generate Leads | Portugal & Europe | Império Web",
+    "homeDescription": "We create websites and landing pages focused on generating leads for businesses in Portugal and Europe. Premium design, SEO, and conversion tracking. From €200.",
+    "homeKeywords": "website creation portugal, landing pages europe, websites for businesses, seo portugal, digital agency europe, conversion websites"
   },
   "servicesPage": {
-    "metaTitle": "Services | Website Creation from €200 | Império Web Lisbon",
-    "metaDescription": "Professional website creation from €200 for local businesses in Lisbon and South Bank. Landing pages, social media, and local SEO. Contact us.",
-    "badge": "Services for Local Businesses",
+    "metaTitle": "Services | Website Creation from €200 | Império Web Portugal",
+    "metaDescription": "Professional website creation from €200 for businesses in Portugal and Europe. Landing pages, social media, and SEO. Contact us.",
+    "badge": "Services for Businesses",
     "headline": "Professional Websites",
     "headlineHighlight": "From €200",
-    "description": "We create professional websites focused on generating WhatsApp leads for local businesses in Lisbon and South Bank.",
+    "description": "We create professional websites focused on generating WhatsApp leads for businesses in Portugal and Europe.",
     "ctaButton": "Talk to an Expert Now",
     "mostPopular": "Most Popular",
     "whatIsIncluded": "What's included:",
@@ -230,7 +230,7 @@
     "readyCta": "Get a Proposal for My Business",
     "service1Title": "Professional Website Creation",
     "service1Subtitle": "Institutional and commercial websites",
-    "service1Description": "We create professional websites from €200, focused on generating WhatsApp leads for local businesses.",
+    "service1Description": "We create professional websites from €200, focused on generating WhatsApp leads for businesses in Portugal and Europe.",
     "service1Feature1": "Responsive design for mobile and desktop",
     "service1Feature2": "Direct WhatsApp contact button",
     "service1Feature3": "SEO optimization to rank on Google",
@@ -270,8 +270,8 @@
     "service4Price": "Consulting"
   },
   "aboutPage": {
-    "metaTitle": "About Império Web | Digital Agency in Portugal",
-    "metaDescription": "Meet Império Web, a digital agency specialized in website creation and digital solutions for businesses in Lisbon and South Bank.",
+    "metaTitle": "About Império Web | Digital Agency in Portugal and Europe",
+    "metaDescription": "Meet Império Web, a digital agency specialized in website creation and digital solutions for businesses in Portugal and Europe.",
     "badge": "About Us",
     "headline": "We Are",
     "headlineHighlight": "Império Web",
@@ -280,7 +280,7 @@
     "missionHeadlineHighlight": "Mission",
     "missionText1": "Império Web was born from a passion for technology and the desire to help small businesses and local enterprises thrive in the digital world.",
     "missionText2": "We believe that every company, regardless of size, deserves a professional and effective online presence. Our goal is to democratize access to quality digital solutions, offering premium services at accessible prices.",
-    "missionText3": "Headquartered in Portugal, we serve clients in Lisbon, South Bank, and throughout the region, with plans to expand to Brazil and the international market.",
+    "missionText3": "Headquartered in Portugal, we serve clients throughout Portugal and Europe, with plans to expand to Brazil and the international market.",
     "buildingFuture": "Building the Digital Future",
     "valuesTitle": "Our Values",
     "valuesSubtitle": "What",
@@ -300,8 +300,8 @@
     "ctaMessage": "Send Message"
   },
   "contactPage": {
-    "metaTitle": "Contact | Get a Free Proposal | Império Web Lisbon",
-    "metaDescription": "Get a free proposal for website creation in Lisbon and South Bank. Response in less than 24 hours. Talk to us on WhatsApp.",
+    "metaTitle": "Contact | Get a Free Proposal | Império Web Portugal",
+    "metaDescription": "Get a free proposal for website creation in Portugal and Europe. Response in less than 24 hours. Talk to us on WhatsApp.",
     "badge": "Contact Us",
     "headline": "Get a",
     "headlineHighlight": "Free Proposal",
@@ -311,7 +311,7 @@
     "talkDescription": "We're ready to help your local business have more online presence and generate more leads.",
     "locationTitle": "Location",
     "locationText": "Lisbon, Portugal",
-    "locationSubText": "Serving Lisbon and South Bank",
+    "locationSubText": "Serving Portugal and Europe",
     "emailTitle": "Email",
     "whatsappTitle": "WhatsApp",
     "quickResponseTitle": "Want a Faster Response?",
