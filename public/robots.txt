@@ -1,3 +1,6 @@
+# Império Web - robots.txt
+# https://imperioweb.eu
+
 User-agent: Googlebot
 Allow: /
 
@@ -10,5 +13,11 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://imperioweb.eu/sitemap.xml
