@@ -1,11 +1,24 @@
 import { ArrowRight, Sparkles, CheckCircle, Users, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
-  const whatsappMessage = encodeURIComponent(
-    "Olá! Tenho um negócio local e gostaria de saber como funciona a criação de um site para gerar mais contactos."
-  );
+  const { t } = useLanguage();
+  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
+
+  const socialProofPills = [
+    { icon: Users, text: t("hero.pillExperts") },
+    { icon: Target, text: t("hero.pillResults") },
+    { icon: CheckCircle, text: t("hero.pillCustom") },
+  ];
+
+  const stats = [
+    { number: t("hero.stat1Number"), label: t("hero.stat1Label") },
+    { number: t("hero.stat2Number"), label: t("hero.stat2Label") },
+    { number: t("hero.stat3Number"), label: t("hero.stat3Label") },
+    { number: t("hero.stat4Number"), label: t("hero.stat4Label") },
+  ];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -34,7 +47,7 @@ const HeroSection = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border mb-8"
           >
             <Sparkles size={16} className="text-primary" />
-            <span className="text-sm text-muted-foreground">Agência Digital em Lisboa e Margem Sul</span>
+            <span className="text-sm text-muted-foreground">{t("hero.badge")}</span>
           </motion.div>
 
           {/* Pain Point - Direct Headline */}
@@ -44,7 +57,7 @@ const HeroSection = () => {
             transition={{ duration: 0.5, delay: 0.05 }}
             className="text-primary font-medium mb-4"
           >
-            Poucos contactos? Site desatualizado? Sem presença online?
+            {t("hero.painPoint")}
           </motion.p>
 
           {/* Headline */}
@@ -54,9 +67,9 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-tight mb-6"
           >
-            Criamos Sites que{" "}
-            <span className="text-gradient">Geram Contactos</span>{" "}
-            para o Seu Negócio
+            {t("hero.headline")}{" "}
+            <span className="text-gradient">{t("hero.headlineHighlight")}</span>{" "}
+            {t("hero.headlineEnd")}
           </motion.h1>
 
           {/* Value Proposition */}
@@ -66,7 +79,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-6"
           >
-            Sites profissionais a partir de <span className="text-foreground font-semibold">200€</span>, focados em gerar contactos via WhatsApp para negócios locais em Portugal.
+            {t("hero.valueProposition")} <span className="text-foreground font-semibold">{t("hero.valuePropositionPrice")}</span>{t("hero.valuePropositionEnd")}
           </motion.p>
 
           {/* Social Proof Pills */}
@@ -76,11 +89,7 @@ const HeroSection = () => {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="flex flex-wrap justify-center gap-3 mb-10"
           >
-            {[
-              { icon: Users, text: "Especialistas em negócios locais" },
-              { icon: Target, text: "Foco em resultados reais" },
-              { icon: CheckCircle, text: "Projetos personalizados" },
-            ].map((item, index) => (
+            {socialProofPills.map((item, index) => (
               <div
                 key={index}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20"
@@ -104,13 +113,13 @@ const HeroSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Quero um Site que Venda
+                {t("hero.ctaPrimary")}
                 <ArrowRight size={20} />
               </a>
             </Button>
             <Button variant="outline" size="xl" asChild>
               <a href="/servicos">
-                Ver Serviços e Preços
+                {t("hero.ctaSecondary")}
               </a>
             </Button>
           </motion.div>
@@ -123,12 +132,7 @@ const HeroSection = () => {
             className="mt-16 pt-16 border-t border-border/50"
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[
-                { number: "50+", label: "Projetos Entregues" },
-                { number: "100%", label: "Clientes Satisfeitos" },
-                { number: "<24h", label: "Tempo de Resposta" },
-                { number: "5★", label: "Avaliação Média" },
-              ].map((stat, index) => (
+              {stats.map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-3xl md:text-4xl font-bold font-display text-gradient mb-2">
                     {stat.number}
