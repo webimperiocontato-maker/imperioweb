@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Index from "./pages/Index";
 import Servicos from "./pages/Servicos";
+import Portfolio from "./pages/Portfolio";
 import Sobre from "./pages/Sobre";
 import Contacto from "./pages/Contacto";
 import NotFound from "./pages/NotFound";
@@ -24,6 +25,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/servicos" element={<Servicos />} />
+              <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/contacto" element={<Contacto />} />
               <Route path="*" element={<NotFound />} />
