@@ -5,13 +5,13 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-
-const whatsappMessage = encodeURIComponent(
-  "Olá! Tenho um negócio local e gostaria de saber como funciona a criação de um site para gerar mais contactos."
-);
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contacto = () => {
   const { toast } = useToast();
+  const { t, language } = useLanguage();
+  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,30 +23,26 @@ const Contacto = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Build WhatsApp message
-    const whatsappFormMessage = `Olá! O meu nome é ${formData.name}.%0A%0AServiço de interesse: ${formData.service || "Não especificado"}%0A%0AMensagem: ${formData.message}%0A%0AContacto: ${formData.email} | ${formData.phone}`;
+    const whatsappFormMessage = `${language === "pt" ? "Olá! O meu nome é" : "Hello! My name is"} ${formData.name}.%0A%0A${language === "pt" ? "Serviço de interesse" : "Service of interest"}: ${formData.service || (language === "pt" ? "Não especificado" : "Not specified")}%0A%0A${language === "pt" ? "Mensagem" : "Message"}: ${formData.message}%0A%0A${language === "pt" ? "Contacto" : "Contact"}: ${formData.email} | ${formData.phone}`;
     
     window.open(`https://wa.me/351910000000?text=${whatsappFormMessage}`, "_blank");
     
     toast({
-      title: "Mensagem Preparada!",
-      description: "Será redirecionado para o WhatsApp para enviar a sua mensagem.",
+      title: t("contactPage.toastTitle"),
+      description: t("contactPage.toastDescription"),
     });
   };
 
   return (
     <>
       <Helmet>
-        <title>Contacto | Receber Proposta Gratuita | Império Web Lisboa</title>
-        <meta
-          name="description"
-          content="Receba uma proposta gratuita para criação de sites em Lisboa e Margem Sul. Resposta em menos de 24 horas. Fale connosco no WhatsApp."
-        />
-        <meta
-          name="keywords"
-          content="contacto império web, orçamento sites portugal, agência digital lisboa contacto, pedir orçamento site margem sul"
-        />
+        <html lang={language === "pt" ? "pt-PT" : "en"} />
+        <title>{t("contactPage.metaTitle")}</title>
+        <meta name="description" content={t("contactPage.metaDescription")} />
         <link rel="canonical" href="https://imperioweb.pt/contacto" />
+        <link rel="alternate" hrefLang="pt-PT" href="https://imperioweb.pt/contacto" />
+        <link rel="alternate" hrefLang="en" href="https://imperioweb.pt/contacto" />
+        <meta property="og:locale" content={language === "pt" ? "pt_PT" : "en_US"} />
       </Helmet>
       <Layout>
         {/* Hero */}
@@ -60,14 +56,14 @@ const Contacto = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-                Fale Connosco
+                {t("contactPage.badge")}
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-6">
-                Receba uma{" "}
-                <span className="text-gradient">Proposta Gratuita</span>
+                {t("contactPage.headline")}{" "}
+                <span className="text-gradient">{t("contactPage.headlineHighlight")}</span>
               </h1>
               <p className="text-lg text-muted-foreground mb-6">
-                Preencha o formulário ou fale diretamente no WhatsApp. Respondemos em menos de 24 horas.
+                {t("contactPage.description")}
               </p>
               <Button variant="whatsapp" size="lg" asChild>
                 <a
@@ -76,7 +72,7 @@ const Contacto = () => {
                   rel="noopener noreferrer"
                 >
                   <MessageCircle size={20} />
-                  Falar Agora no WhatsApp
+                  {t("contactPage.ctaButton")}
                 </a>
               </Button>
             </motion.div>
@@ -97,10 +93,10 @@ const Contacto = () => {
               >
                 <div>
                   <h2 className="text-2xl font-bold font-display mb-4">
-                    Vamos Conversar?
+                    {t("contactPage.talkTitle")}
                   </h2>
                   <p className="text-muted-foreground">
-                    Estamos prontos para ajudar o seu negócio local a ter mais presença online e gerar mais contactos.
+                    {t("contactPage.talkDescription")}
                   </p>
                 </div>
 
@@ -110,10 +106,10 @@ const Contacto = () => {
                       <MapPin size={24} className="text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground mb-1">Localização</h3>
+                      <h3 className="font-semibold text-foreground mb-1">{t("contactPage.locationTitle")}</h3>
                       <p className="text-muted-foreground text-sm">
-                        Lisboa, Portugal<br />
-                        Servindo Lisboa e Margem Sul
+                        {t("contactPage.locationText")}<br />
+                        {t("contactPage.locationSubText")}
                       </p>
                     </div>
                   </div>
@@ -123,7 +119,7 @@ const Contacto = () => {
                       <Mail size={24} className="text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground mb-1">Email</h3>
+                      <h3 className="font-semibold text-foreground mb-1">{t("contactPage.emailTitle")}</h3>
                       <a 
                         href="mailto:info@imperioweb.pt" 
                         className="text-muted-foreground text-sm hover:text-primary transition-colors"
@@ -138,7 +134,7 @@ const Contacto = () => {
                       <Phone size={24} className="text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground mb-1">WhatsApp</h3>
+                      <h3 className="font-semibold text-foreground mb-1">{t("contactPage.whatsappTitle")}</h3>
                       <a 
                         href="https://wa.me/351910000000" 
                         target="_blank" 
@@ -153,9 +149,9 @@ const Contacto = () => {
 
                 {/* Quick WhatsApp CTA */}
                 <div className="p-6 rounded-2xl bg-gradient-card border border-primary/30 shadow-glow">
-                  <h3 className="font-semibold font-display mb-2">Resposta Mais Rápida?</h3>
+                  <h3 className="font-semibold font-display mb-2">{t("contactPage.quickResponseTitle")}</h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Clique abaixo e fale diretamente com um especialista.
+                    {t("contactPage.quickResponseDescription")}
                   </p>
                   <Button variant="whatsapp" className="w-full" asChild>
                     <a
@@ -163,7 +159,7 @@ const Contacto = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Quero um Site que Venda
+                      {t("contactPage.quickResponseCta")}
                       <ArrowRight size={18} />
                     </a>
                   </Button>
@@ -183,17 +179,17 @@ const Contacto = () => {
                   className="p-8 rounded-3xl bg-gradient-card border border-border"
                 >
                   <h2 className="text-2xl font-bold font-display mb-2">
-                    Receber Proposta para o Meu Negócio
+                    {t("contactPage.formTitle")}
                   </h2>
                   <p className="text-sm text-muted-foreground mb-6">
-                    Preencha os campos abaixo e receba uma proposta personalizada.
+                    {t("contactPage.formDescription")}
                   </p>
 
                   <div className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium mb-2 text-foreground">
-                          Nome Completo *
+                          {t("contactPage.labelName")} *
                         </label>
                         <input
                           type="text"
@@ -201,12 +197,12 @@ const Contacto = () => {
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none text-foreground placeholder:text-muted-foreground"
-                          placeholder="O seu nome"
+                          placeholder={t("contactPage.placeholderName")}
                         />
                       </div>
                       <div>
                         <label className="block text-sm font-medium mb-2 text-foreground">
-                          Email *
+                          {t("contactPage.labelEmail")} *
                         </label>
                         <input
                           type="email"
@@ -214,7 +210,7 @@ const Contacto = () => {
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none text-foreground placeholder:text-muted-foreground"
-                          placeholder="seu@email.pt"
+                          placeholder={t("contactPage.placeholderEmail")}
                         />
                       </div>
                     </div>
@@ -222,38 +218,38 @@ const Contacto = () => {
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium mb-2 text-foreground">
-                          Telefone / WhatsApp
+                          {t("contactPage.labelPhone")}
                         </label>
                         <input
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none text-foreground placeholder:text-muted-foreground"
-                          placeholder="+351 900 000 000"
+                          placeholder={t("contactPage.placeholderPhone")}
                         />
                       </div>
                       <div>
                         <label className="block text-sm font-medium mb-2 text-foreground">
-                          O Que Precisa?
+                          {t("contactPage.labelService")}
                         </label>
                         <select
                           value={formData.service}
                           onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none text-foreground"
                         >
-                          <option value="">Selecione uma opção</option>
-                          <option value="Site Profissional (200€-300€)">Site Profissional (200€-300€)</option>
-                          <option value="Landing Page">Landing Page</option>
-                          <option value="Social Media">Social Media</option>
-                          <option value="SEO Local">SEO Local</option>
-                          <option value="Outro">Outro</option>
+                          <option value="">{t("contactPage.selectOption")}</option>
+                          <option value={t("contactPage.optionSite")}>{t("contactPage.optionSite")}</option>
+                          <option value={t("contactPage.optionLanding")}>{t("contactPage.optionLanding")}</option>
+                          <option value={t("contactPage.optionSocial")}>{t("contactPage.optionSocial")}</option>
+                          <option value={t("contactPage.optionSeo")}>{t("contactPage.optionSeo")}</option>
+                          <option value={t("contactPage.optionOther")}>{t("contactPage.optionOther")}</option>
                         </select>
                       </div>
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium mb-2 text-foreground">
-                        Conte-nos sobre o seu negócio *
+                        {t("contactPage.labelMessage")} *
                       </label>
                       <textarea
                         required
@@ -261,17 +257,17 @@ const Contacto = () => {
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none text-foreground placeholder:text-muted-foreground resize-none"
-                        placeholder="Qual é o seu negócio? O que precisa? Quais são os seus objetivos?"
+                        placeholder={t("contactPage.placeholderMessage")}
                       />
                     </div>
 
                     <Button type="submit" variant="hero" size="xl" className="w-full">
-                      Enviar e Receber Proposta
+                      {t("contactPage.submitButton")}
                       <Send size={20} />
                     </Button>
 
                     <p className="text-xs text-muted-foreground text-center">
-                      Ao submeter, será redirecionado para o WhatsApp para finalizar. Resposta em menos de 24h.
+                      {t("contactPage.submitNote")}
                     </p>
                   </div>
                 </form>

@@ -3,44 +3,45 @@ import Layout from "@/components/layout/Layout";
 import { Target, Users, Award, Lightbulb, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-
-const values = [
-  {
-    icon: Target,
-    title: "Foco em Resultados",
-    description: "Cada projeto é desenvolvido com o objetivo de gerar conversões e crescimento real para o seu negócio.",
-  },
-  {
-    icon: Users,
-    title: "Parceria Próxima",
-    description: "Trabalhamos lado a lado com os nossos clientes, garantindo comunicação clara e transparente.",
-  },
-  {
-    icon: Award,
-    title: "Qualidade Premium",
-    description: "Entregamos apenas trabalhos de excelência, com atenção aos mínimos detalhes.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Inovação Constante",
-    description: "Mantemo-nos atualizados com as últimas tendências e tecnologias do mercado digital.",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
+import logoCrown from "@/assets/logo-crown.png";
 
 const Sobre = () => {
+  const { t, language } = useLanguage();
+
+  const values = [
+    {
+      icon: Target,
+      title: t("aboutPage.value1Title"),
+      description: t("aboutPage.value1Description"),
+    },
+    {
+      icon: Users,
+      title: t("aboutPage.value2Title"),
+      description: t("aboutPage.value2Description"),
+    },
+    {
+      icon: Award,
+      title: t("aboutPage.value3Title"),
+      description: t("aboutPage.value3Description"),
+    },
+    {
+      icon: Lightbulb,
+      title: t("aboutPage.value4Title"),
+      description: t("aboutPage.value4Description"),
+    },
+  ];
+
   return (
     <>
       <Helmet>
-        <title>Sobre a Império Web | Agência Digital em Portugal</title>
-        <meta
-          name="description"
-          content="Conheça a Império Web, agência digital especializada em criação de sites e soluções digitais para negócios em Lisboa e Margem Sul."
-        />
-        <meta
-          name="keywords"
-          content="agência digital portugal, sobre império web, equipa digital lisboa, agência web margem sul"
-        />
+        <html lang={language === "pt" ? "pt-PT" : "en"} />
+        <title>{t("aboutPage.metaTitle")}</title>
+        <meta name="description" content={t("aboutPage.metaDescription")} />
         <link rel="canonical" href="https://imperioweb.pt/sobre" />
+        <link rel="alternate" hrefLang="pt-PT" href="https://imperioweb.pt/sobre" />
+        <link rel="alternate" hrefLang="en" href="https://imperioweb.pt/sobre" />
+        <meta property="og:locale" content={language === "pt" ? "pt_PT" : "en_US"} />
       </Helmet>
       <Layout>
         {/* Hero */}
@@ -54,14 +55,14 @@ const Sobre = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-                Sobre Nós
+                {t("aboutPage.badge")}
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-6">
-                Somos a{" "}
-                <span className="text-gradient">Império Web</span>
+                {t("aboutPage.headline")}{" "}
+                <span className="text-gradient">{t("aboutPage.headlineHighlight")}</span>
               </h1>
               <p className="text-lg text-muted-foreground">
-                Agência digital focada em transformar negócios através de soluções web modernas e estratégias digitais eficazes.
+                {t("aboutPage.description")}
               </p>
             </motion.div>
           </div>
@@ -78,18 +79,12 @@ const Sobre = () => {
                 transition={{ duration: 0.6 }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold font-display mb-6">
-                  A Nossa <span className="text-gradient">Missão</span>
+                  {t("aboutPage.missionHeadline")} <span className="text-gradient">{t("aboutPage.missionHeadlineHighlight")}</span>
                 </h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    A Império Web nasceu da paixão por tecnologia e do desejo de ajudar pequenas empresas e negócios locais a prosperarem no mundo digital.
-                  </p>
-                  <p>
-                    Acreditamos que toda empresa, independentemente do tamanho, merece uma presença online profissional e eficaz. O nosso objetivo é democratizar o acesso a soluções digitais de qualidade, oferecendo serviços premium a preços acessíveis.
-                  </p>
-                  <p>
-                    Com sede em Portugal, servimos clientes em Lisboa, Margem Sul e em toda a região, com planos de expansão para o Brasil e mercado internacional.
-                  </p>
+                  <p>{t("aboutPage.missionText1")}</p>
+                  <p>{t("aboutPage.missionText2")}</p>
+                  <p>{t("aboutPage.missionText3")}</p>
                 </div>
               </motion.div>
 
@@ -104,14 +99,12 @@ const Sobre = () => {
                   <div className="absolute inset-0 bg-glow opacity-30" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-24 h-24 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <span className="text-primary-foreground font-bold text-5xl font-display">I</span>
-                      </div>
+                      <img src={logoCrown} alt="Império Web" className="w-24 h-24 mx-auto mb-6" />
                       <h3 className="text-2xl font-bold font-display text-foreground mb-2">
                         Império Web
                       </h3>
                       <p className="text-muted-foreground">
-                        Construindo o Futuro Digital
+                        {t("aboutPage.buildingFuture")}
                       </p>
                     </div>
                   </div>
@@ -131,10 +124,10 @@ const Sobre = () => {
               className="text-center mb-16"
             >
               <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-                Os Nossos Valores
+                {t("aboutPage.valuesTitle")}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold font-display">
-                O Que Nos <span className="text-gradient">Define</span>
+                {t("aboutPage.valuesSubtitle")} <span className="text-gradient">{t("aboutPage.valuesSubtitleHighlight")}</span>
               </h2>
             </motion.div>
 
@@ -173,26 +166,26 @@ const Sobre = () => {
               className="text-center max-w-2xl mx-auto"
             >
               <h2 className="text-3xl md:text-4xl font-bold font-display mb-6">
-                Vamos Trabalhar{" "}
-                <span className="text-gradient">Juntos</span>?
+                {t("aboutPage.ctaHeadline")}{" "}
+                <span className="text-gradient">{t("aboutPage.ctaHeadlineHighlight")}</span>?
               </h2>
               <p className="text-muted-foreground mb-8">
-                Estamos prontos para ajudar o seu negócio a crescer no mundo digital. Entre em contacto e vamos conversar sobre o seu projeto.
+                {t("aboutPage.ctaDescription")}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button variant="whatsapp" size="xl" asChild>
                   <a
-                    href="https://wa.me/351910000000?text=Olá! Gostaria de saber mais sobre a Império Web."
+                    href={`https://wa.me/351910000000?text=${encodeURIComponent(t("whatsapp.aboutMessage"))}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Falar no WhatsApp
+                    {t("aboutPage.ctaWhatsApp")}
                     <ArrowRight size={20} />
                   </a>
                 </Button>
                 <Button variant="outline" size="xl" asChild>
                   <a href="/contacto">
-                    Enviar Mensagem
+                    {t("aboutPage.ctaMessage")}
                   </a>
                 </Button>
               </div>
