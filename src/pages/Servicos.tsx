@@ -1,22 +1,26 @@
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/layout/Layout";
-import { Globe, Rocket, Share2, TrendingUp, Check, ArrowRight } from "lucide-react";
+import { Globe, Rocket, Share2, TrendingUp, Check, ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+
+const whatsappMessage = encodeURIComponent(
+  "Olá! Tenho um negócio local e gostaria de saber como funciona a criação de um site para gerar mais contactos."
+);
 
 const services = [
   {
     icon: Globe,
     title: "Criação de Sites Profissionais",
     subtitle: "Sites institucionais e comerciais",
-    description: "Desenvolvemos sites modernos e otimizados que representam a identidade da sua marca e convertem visitantes em clientes.",
+    description: "Criamos sites profissionais a partir de 200€, focados em gerar contactos via WhatsApp para negócios locais.",
     features: [
-      "Design responsivo para todos os dispositivos",
-      "Redirecionamento direto para WhatsApp",
-      "Otimização SEO básica incluída",
+      "Design responsivo para telemóvel e desktop",
+      "Botão de contacto direto no WhatsApp",
+      "Otimização SEO para aparecer no Google",
       "Integração com redes sociais",
-      "Painel de gestão intuitivo",
-      "Suporte e manutenção inicial",
+      "Painel de gestão simples",
+      "Suporte e acompanhamento incluídos",
     ],
     price: "200€ - 300€",
     highlight: true,
@@ -25,13 +29,13 @@ const services = [
     icon: Rocket,
     title: "Landing Pages de Alta Conversão",
     subtitle: "Foco em vendas e geração de leads",
-    description: "Páginas estratégicas desenhadas para maximizar conversões em campanhas de anúncios e marketing digital.",
+    description: "Páginas estratégicas para campanhas de anúncios que convertem visitantes em contactos.",
     features: [
       "Design focado em conversão",
-      "Testes A/B e otimização",
-      "Integração com ferramentas de analytics",
+      "Otimização para anúncios",
+      "Carregamento ultra-rápido",
       "CTAs estratégicos e persuasivos",
-      "Velocidade de carregamento otimizada",
+      "Integração com WhatsApp",
       "Ideal para Facebook e Google Ads",
     ],
     price: "Projetos Premium",
@@ -41,30 +45,30 @@ const services = [
     icon: Share2,
     title: "Gestão de Social Media",
     subtitle: "Estratégia de redes sociais",
-    description: "Gestão profissional das suas redes sociais para aumentar a visibilidade e engagement da sua marca.",
+    description: "Gestão profissional das suas redes sociais para aumentar a visibilidade do seu negócio local.",
     features: [
       "Criação de conteúdo visual",
       "Calendário editorial mensal",
       "Gestão de Facebook e Instagram",
-      "Análise de métricas e relatórios",
-      "Interação com a comunidade",
-      "Estratégia de hashtags",
+      "Relatórios de resultados",
+      "Interação com seguidores",
+      "Estratégia de hashtags locais",
     ],
     price: "Planos Mensais",
     highlight: false,
   },
   {
     icon: TrendingUp,
-    title: "SEO & Marketing Digital",
-    subtitle: "Otimização e estratégia",
-    description: "Posicione o seu negócio nos primeiros resultados do Google e atraia clientes qualificados organicamente.",
+    title: "SEO Local",
+    subtitle: "Apareça no Google na sua região",
+    description: "Posicione o seu negócio nos primeiros resultados quando clientes procuram serviços na sua área.",
     features: [
-      "Auditoria SEO completa",
-      "Otimização on-page e off-page",
-      "Pesquisa de palavras-chave",
-      "Link building estratégico",
-      "Relatórios mensais de performance",
-      "Consultoria personalizada",
+      "Otimização para Google My Business",
+      "SEO para pesquisas locais",
+      "Palavras-chave da sua região",
+      "Otimização do site existente",
+      "Relatórios de posicionamento",
+      "Estratégia de longo prazo",
     ],
     price: "Consultoria",
     highlight: false,
@@ -88,14 +92,14 @@ const Servicos = () => {
   return (
     <>
       <Helmet>
-        <title>Serviços Digitais | Criação de Sites e Landing Pages | Império Web</title>
+        <title>Serviços | Criação de Sites desde 200€ | Império Web Lisboa</title>
         <meta
           name="description"
-          content="Serviços de criação de sites profissionais, landing pages de alta conversão, gestão de social media e SEO para negócios em Portugal."
+          content="Criação de sites profissionais desde 200€ para negócios locais em Lisboa e Margem Sul. Landing pages, social media e SEO local. Contacte-nos."
         />
         <meta
           name="keywords"
-          content="serviços digitais portugal, criação de sites lisboa, landing pages portugal, social media margem sul, seo portugal"
+          content="criação de sites margem sul, sites baratos portugal, landing pages lisboa, social media portugal, seo local lisboa"
         />
         <link rel="canonical" href="https://imperioweb.pt/servicos" />
       </Helmet>
@@ -111,15 +115,25 @@ const Servicos = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-                Os Nossos Serviços
+                Serviços para Negócios Locais
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-6">
-                Serviços Digitais da{" "}
-                <span className="text-gradient">Império Web</span>
+                Sites Profissionais{" "}
+                <span className="text-gradient">Desde 200€</span>
               </h1>
-              <p className="text-lg text-muted-foreground">
-                Soluções completas para transformar a presença digital do seu negócio e gerar resultados reais.
+              <p className="text-lg text-muted-foreground mb-6">
+                Criamos sites profissionais focados em gerar contactos via WhatsApp para negócios locais em Lisboa e Margem Sul.
               </p>
+              <Button variant="whatsapp" size="lg" asChild>
+                <a
+                  href={`https://wa.me/351910000000?text=${whatsappMessage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle size={20} />
+                  Falar com um Especialista Agora
+                </a>
+              </Button>
             </motion.div>
           </div>
         </section>
@@ -187,11 +201,11 @@ const Servicos = () => {
                       <div className="pt-6">
                         <Button variant="hero" size="lg" asChild>
                           <a
-                            href={`https://wa.me/351910000000?text=Olá! Tenho interesse no serviço: ${service.title}`}
+                            href={`https://wa.me/351910000000?text=${encodeURIComponent(`Olá! Tenho interesse no serviço: ${service.title}. Gostaria de saber mais informações.`)}`}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            Pedir Orçamento
+                            Quero Este Serviço
                             <ArrowRight size={18} />
                           </a>
                         </Button>
@@ -214,18 +228,18 @@ const Servicos = () => {
               className="text-center max-w-2xl mx-auto"
             >
               <h2 className="text-3xl md:text-4xl font-bold font-display mb-6">
-                Não encontrou o que procura?
+                Pronto para Ter <span className="text-gradient">Mais Contactos</span>?
               </h2>
               <p className="text-muted-foreground mb-8">
-                Desenvolvemos soluções personalizadas para as necessidades específicas do seu negócio. Entre em contacto para uma consulta gratuita.
+                Fale connosco agora e receba uma proposta personalizada para o seu negócio em menos de 24 horas.
               </p>
               <Button variant="whatsapp" size="xl" asChild>
                 <a
-                  href="https://wa.me/351910000000?text=Olá! Gostaria de saber mais sobre os vossos serviços."
+                  href={`https://wa.me/351910000000?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Fale Connosco
+                  Receber Proposta para o Meu Negócio
                   <ArrowRight size={20} />
                 </a>
               </Button>

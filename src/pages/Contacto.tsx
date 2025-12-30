@@ -1,10 +1,14 @@
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/layout/Layout";
-import { MapPin, Mail, Phone, Send, ArrowRight } from "lucide-react";
+import { MapPin, Mail, Phone, Send, ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+
+const whatsappMessage = encodeURIComponent(
+  "Olá! Tenho um negócio local e gostaria de saber como funciona a criação de um site para gerar mais contactos."
+);
 
 const Contacto = () => {
   const { toast } = useToast();
@@ -20,9 +24,9 @@ const Contacto = () => {
     e.preventDefault();
     
     // Build WhatsApp message
-    const whatsappMessage = `Olá! O meu nome é ${formData.name}.%0A%0AServiço de interesse: ${formData.service || "Não especificado"}%0A%0AMensagem: ${formData.message}%0A%0AContacto: ${formData.email} | ${formData.phone}`;
+    const whatsappFormMessage = `Olá! O meu nome é ${formData.name}.%0A%0AServiço de interesse: ${formData.service || "Não especificado"}%0A%0AMensagem: ${formData.message}%0A%0AContacto: ${formData.email} | ${formData.phone}`;
     
-    window.open(`https://wa.me/351910000000?text=${whatsappMessage}`, "_blank");
+    window.open(`https://wa.me/351910000000?text=${whatsappFormMessage}`, "_blank");
     
     toast({
       title: "Mensagem Preparada!",
@@ -33,14 +37,14 @@ const Contacto = () => {
   return (
     <>
       <Helmet>
-        <title>Contacto | Pedir Orçamento | Império Web</title>
+        <title>Contacto | Receber Proposta Gratuita | Império Web Lisboa</title>
         <meta
           name="description"
-          content="Entre em contacto com a Império Web para pedir um orçamento gratuito. Criação de sites, landing pages e social media em Lisboa e Margem Sul."
+          content="Receba uma proposta gratuita para criação de sites em Lisboa e Margem Sul. Resposta em menos de 24 horas. Fale connosco no WhatsApp."
         />
         <meta
           name="keywords"
-          content="contacto império web, orçamento sites portugal, agência digital contacto, pedir orçamento site"
+          content="contacto império web, orçamento sites portugal, agência digital lisboa contacto, pedir orçamento site margem sul"
         />
         <link rel="canonical" href="https://imperioweb.pt/contacto" />
       </Helmet>
@@ -56,15 +60,25 @@ const Contacto = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-                Contacto
+                Fale Connosco
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-6">
-                Vamos Conversar Sobre o Seu{" "}
-                <span className="text-gradient">Projeto</span>
+                Receba uma{" "}
+                <span className="text-gradient">Proposta Gratuita</span>
               </h1>
-              <p className="text-lg text-muted-foreground">
-                Preencha o formulário ou entre em contacto diretamente. Respondemos em menos de 24 horas.
+              <p className="text-lg text-muted-foreground mb-6">
+                Preencha o formulário ou fale diretamente no WhatsApp. Respondemos em menos de 24 horas.
               </p>
+              <Button variant="whatsapp" size="lg" asChild>
+                <a
+                  href={`https://wa.me/351910000000?text=${whatsappMessage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle size={20} />
+                  Falar Agora no WhatsApp
+                </a>
+              </Button>
             </motion.div>
           </div>
         </section>
@@ -83,10 +97,10 @@ const Contacto = () => {
               >
                 <div>
                   <h2 className="text-2xl font-bold font-display mb-4">
-                    Informações de Contacto
+                    Vamos Conversar?
                   </h2>
                   <p className="text-muted-foreground">
-                    Estamos disponíveis para responder às suas questões e ajudá-lo a dar o próximo passo digital.
+                    Estamos prontos para ajudar o seu negócio local a ter mais presença online e gerar mais contactos.
                   </p>
                 </div>
 
@@ -138,18 +152,18 @@ const Contacto = () => {
                 </div>
 
                 {/* Quick WhatsApp CTA */}
-                <div className="p-6 rounded-2xl bg-gradient-card border border-border">
-                  <h3 className="font-semibold font-display mb-2">Prefere falar diretamente?</h3>
+                <div className="p-6 rounded-2xl bg-gradient-card border border-primary/30 shadow-glow">
+                  <h3 className="font-semibold font-display mb-2">Resposta Mais Rápida?</h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Clique abaixo para iniciar uma conversa no WhatsApp.
+                    Clique abaixo e fale diretamente com um especialista.
                   </p>
                   <Button variant="whatsapp" className="w-full" asChild>
                     <a
-                      href="https://wa.me/351910000000?text=Olá! Gostaria de pedir um orçamento."
+                      href={`https://wa.me/351910000000?text=${whatsappMessage}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Falar no WhatsApp
+                      Quero um Site que Venda
                       <ArrowRight size={18} />
                     </a>
                   </Button>
@@ -168,9 +182,12 @@ const Contacto = () => {
                   onSubmit={handleSubmit}
                   className="p-8 rounded-3xl bg-gradient-card border border-border"
                 >
-                  <h2 className="text-2xl font-bold font-display mb-6">
-                    Pedir Orçamento Gratuito
+                  <h2 className="text-2xl font-bold font-display mb-2">
+                    Receber Proposta para o Meu Negócio
                   </h2>
+                  <p className="text-sm text-muted-foreground mb-6">
+                    Preencha os campos abaixo e receba uma proposta personalizada.
+                  </p>
 
                   <div className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
@@ -217,18 +234,18 @@ const Contacto = () => {
                       </div>
                       <div>
                         <label className="block text-sm font-medium mb-2 text-foreground">
-                          Serviço de Interesse
+                          O Que Precisa?
                         </label>
                         <select
                           value={formData.service}
                           onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none text-foreground"
                         >
-                          <option value="">Selecione um serviço</option>
-                          <option value="Criação de Site">Criação de Site</option>
+                          <option value="">Selecione uma opção</option>
+                          <option value="Site Profissional (200€-300€)">Site Profissional (200€-300€)</option>
                           <option value="Landing Page">Landing Page</option>
                           <option value="Social Media">Social Media</option>
-                          <option value="SEO & Marketing">SEO & Marketing</option>
+                          <option value="SEO Local">SEO Local</option>
                           <option value="Outro">Outro</option>
                         </select>
                       </div>
@@ -236,7 +253,7 @@ const Contacto = () => {
 
                     <div>
                       <label className="block text-sm font-medium mb-2 text-foreground">
-                        Mensagem *
+                        Conte-nos sobre o seu negócio *
                       </label>
                       <textarea
                         required
@@ -244,17 +261,17 @@ const Contacto = () => {
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none text-foreground placeholder:text-muted-foreground resize-none"
-                        placeholder="Descreva o seu projeto ou as suas necessidades..."
+                        placeholder="Qual é o seu negócio? O que precisa? Quais são os seus objetivos?"
                       />
                     </div>
 
                     <Button type="submit" variant="hero" size="xl" className="w-full">
-                      Enviar Mensagem
+                      Enviar e Receber Proposta
                       <Send size={20} />
                     </Button>
 
                     <p className="text-xs text-muted-foreground text-center">
-                      Ao submeter, será redirecionado para o WhatsApp para finalizar o envio.
+                      Ao submeter, será redirecionado para o WhatsApp para finalizar. Resposta em menos de 24h.
                     </p>
                   </div>
                 </form>

@@ -1,8 +1,12 @@
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, CheckCircle, Users, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
+  const whatsappMessage = encodeURIComponent(
+    "Olá! Tenho um negócio local e gostaria de saber como funciona a criação de um site para gerar mais contactos."
+  );
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Effects */}
@@ -30,8 +34,18 @@ const HeroSection = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border mb-8"
           >
             <Sparkles size={16} className="text-primary" />
-            <span className="text-sm text-muted-foreground">Agência Digital em Portugal</span>
+            <span className="text-sm text-muted-foreground">Agência Digital em Lisboa e Margem Sul</span>
           </motion.div>
+
+          {/* Pain Point - Direct Headline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+            className="text-primary font-medium mb-4"
+          >
+            Poucos contactos? Site desatualizado? Sem presença online?
+          </motion.p>
 
           {/* Headline */}
           <motion.h1
@@ -40,20 +54,42 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-tight mb-6"
           >
-            Criamos Sites e Landing Pages que{" "}
-            <span className="text-gradient">Ajudam o Seu Negócio</span>{" "}
-            a Vender Mais
+            Criamos Sites que{" "}
+            <span className="text-gradient">Geram Contactos</span>{" "}
+            para o Seu Negócio
           </motion.h1>
 
-          {/* Subtitle */}
+          {/* Value Proposition */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-6"
           >
-            Soluções digitais modernas, rápidas e focadas em conversão para pequenas empresas e negócios locais em Lisboa e Margem Sul.
+            Sites profissionais a partir de <span className="text-foreground font-semibold">200€</span>, focados em gerar contactos via WhatsApp para negócios locais em Portugal.
           </motion.p>
+
+          {/* Social Proof Pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="flex flex-wrap justify-center gap-3 mb-10"
+          >
+            {[
+              { icon: Users, text: "Especialistas em negócios locais" },
+              { icon: Target, text: "Foco em resultados reais" },
+              { icon: CheckCircle, text: "Projetos personalizados" },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20"
+              >
+                <item.icon size={14} className="text-primary" />
+                <span className="text-xs text-muted-foreground">{item.text}</span>
+              </div>
+            ))}
+          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
@@ -64,17 +100,17 @@ const HeroSection = () => {
           >
             <Button variant="whatsapp" size="xl" asChild>
               <a
-                href="https://wa.me/351910000000?text=Olá! Gostaria de pedir um orçamento."
+                href={`https://wa.me/351910000000?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Pedir Orçamento no WhatsApp
+                Quero um Site que Venda
                 <ArrowRight size={20} />
               </a>
             </Button>
             <Button variant="outline" size="xl" asChild>
               <a href="/servicos">
-                Ver Serviços
+                Ver Serviços e Preços
               </a>
             </Button>
           </motion.div>
@@ -90,7 +126,7 @@ const HeroSection = () => {
               {[
                 { number: "50+", label: "Projetos Entregues" },
                 { number: "100%", label: "Clientes Satisfeitos" },
-                { number: "24h", label: "Resposta Rápida" },
+                { number: "<24h", label: "Tempo de Resposta" },
                 { number: "5★", label: "Avaliação Média" },
               ].map((stat, index) => (
                 <div key={index} className="text-center">

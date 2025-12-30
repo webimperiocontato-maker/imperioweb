@@ -1,34 +1,39 @@
-import { Check, Zap, Shield, HeartHandshake } from "lucide-react";
+import { Check, Zap, Shield, HeartHandshake, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 const reasons = [
   {
     icon: Zap,
-    title: "Entrega Rápida",
-    description: "Projetos entregues em tempo recorde, sem comprometer a qualidade.",
+    title: "Sites Prontos em Dias",
+    description: "Projetos entregues rapidamente para você começar a receber contactos o mais rápido possível.",
   },
   {
-    icon: Shield,
-    title: "Resultados Garantidos",
-    description: "Sites otimizados para conversão e performance desde o primeiro dia.",
+    icon: MessageCircle,
+    title: "Integração WhatsApp",
+    description: "Botões de contacto direto que facilitam a comunicação com os seus potenciais clientes.",
   },
   {
     icon: HeartHandshake,
-    title: "Suporte Dedicado",
-    description: "Acompanhamento personalizado antes, durante e após o projeto.",
+    title: "Suporte Contínuo",
+    description: "Acompanhamento dedicado antes, durante e após a entrega do seu projeto.",
   },
 ];
 
 const features = [
-  "Design responsivo para todos os dispositivos",
-  "Otimização SEO incluída",
+  "Sites para pequenos negócios em Portugal",
+  "Design responsivo para telemóvel",
+  "Otimização SEO para Google",
   "Integração com WhatsApp",
-  "Hospedagem e domínio facilitados",
-  "Painel de gestão intuitivo",
-  "Atualizações e manutenção",
+  "Sem mensalidades obrigatórias",
+  "Suporte em português",
 ];
 
 const WhyChooseUs = () => {
+  const whatsappMessage = encodeURIComponent(
+    "Olá! Tenho um negócio local e gostaria de saber como funciona a criação de um site para gerar mais contactos."
+  );
+
   return (
     <section className="section-padding">
       <div className="container-custom">
@@ -41,18 +46,18 @@ const WhyChooseUs = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-              Porquê a Império Web
+              Agência Digital em Lisboa
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-display mb-6">
-              A Sua Parceira Digital de{" "}
-              <span className="text-gradient">Confiança</span>
+              Porquê Escolher a{" "}
+              <span className="text-gradient">Império Web</span>?
             </h2>
             <p className="text-muted-foreground mb-8 text-lg">
-              Somos mais do que uma agência. Somos parceiros no crescimento digital do seu negócio, comprometidos com resultados tangíveis e duradouros.
+              Especialistas em criação de sites na Margem Sul e Lisboa. Ajudamos negócios locais a terem presença online profissional e a gerarem mais contactos.
             </p>
 
             {/* Features List */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
@@ -69,6 +74,16 @@ const WhyChooseUs = () => {
                 </motion.div>
               ))}
             </div>
+
+            <Button variant="whatsapp" size="lg" asChild>
+              <a
+                href={`https://wa.me/351910000000?text=${whatsappMessage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Receber Proposta para o Meu Negócio
+              </a>
+            </Button>
           </motion.div>
 
           {/* Right Cards */}
