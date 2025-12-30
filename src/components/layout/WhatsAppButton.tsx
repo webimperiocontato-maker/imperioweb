@@ -1,10 +1,10 @@
 import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const WhatsAppButton = () => {
-  const whatsappMessage = encodeURIComponent(
-    "Olá! Tenho um negócio local e gostaria de saber como funciona a criação de um site para gerar mais contactos."
-  );
+  const { t } = useLanguage();
+  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
 
   return (
     <motion.a
@@ -17,9 +17,10 @@ const WhatsAppButton = () => {
       transition={{ delay: 1, type: "spring", stiffness: 200 }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
+      aria-label={t("floatingWhatsApp.ariaLabel")}
     >
       <MessageCircle size={24} />
-      <span className="font-medium font-display hidden sm:inline">Fale Connosco</span>
+      <span className="font-medium font-display hidden sm:inline">{t("floatingWhatsApp.ariaLabel")}</span>
     </motion.a>
   );
 };

@@ -5,28 +5,26 @@ import ServicesPreview from "@/components/home/ServicesPreview";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import CTASection from "@/components/home/CTASection";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
+  const { t, language } = useLanguage();
+
   return (
     <>
       <Helmet>
-        <title>Criação de Sites em Lisboa e Margem Sul | Desde 200€ | Império Web</title>
-        <meta
-          name="description"
-          content="Criação de sites profissionais para negócios locais em Lisboa e Margem Sul. Sites focados em gerar contactos via WhatsApp. Desde 200€. Resposta em 24h."
-        />
-        <meta
-          name="keywords"
-          content="criação de sites margem sul, agência digital lisboa, sites para pequenos negócios portugal, criação de sites portugal, landing pages conversão, sites whatsapp"
-        />
+        <html lang={language === "pt" ? "pt-PT" : "en"} />
+        <title>{t("seo.homeTitle")}</title>
+        <meta name="description" content={t("seo.homeDescription")} />
+        <meta name="keywords" content={t("seo.homeKeywords")} />
         <link rel="canonical" href="https://imperioweb.pt" />
-        <meta property="og:title" content="Criação de Sites em Lisboa e Margem Sul | Desde 200€ | Império Web" />
-        <meta
-          property="og:description"
-          content="Sites profissionais para negócios locais focados em gerar contactos via WhatsApp. Desde 200€."
-        />
+        <link rel="alternate" hrefLang="pt-PT" href="https://imperioweb.pt" />
+        <link rel="alternate" hrefLang="en" href="https://imperioweb.pt" />
+        <link rel="alternate" hrefLang="x-default" href="https://imperioweb.pt" />
+        <meta property="og:title" content={t("seo.homeTitle")} />
+        <meta property="og:description" content={t("seo.homeDescription")} />
         <meta property="og:type" content="website" />
-        <meta property="og:locale" content="pt_PT" />
+        <meta property="og:locale" content={language === "pt" ? "pt_PT" : "en_US"} />
       </Helmet>
       <Layout>
         <HeroSection />

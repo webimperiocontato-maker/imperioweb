@@ -3,77 +3,7 @@ import Layout from "@/components/layout/Layout";
 import { Globe, Rocket, Share2, TrendingUp, Check, ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-
-const whatsappMessage = encodeURIComponent(
-  "Olá! Tenho um negócio local e gostaria de saber como funciona a criação de um site para gerar mais contactos."
-);
-
-const services = [
-  {
-    icon: Globe,
-    title: "Criação de Sites Profissionais",
-    subtitle: "Sites institucionais e comerciais",
-    description: "Criamos sites profissionais a partir de 200€, focados em gerar contactos via WhatsApp para negócios locais.",
-    features: [
-      "Design responsivo para telemóvel e desktop",
-      "Botão de contacto direto no WhatsApp",
-      "Otimização SEO para aparecer no Google",
-      "Integração com redes sociais",
-      "Painel de gestão simples",
-      "Suporte e acompanhamento incluídos",
-    ],
-    price: "200€ - 300€",
-    highlight: true,
-  },
-  {
-    icon: Rocket,
-    title: "Landing Pages de Alta Conversão",
-    subtitle: "Foco em vendas e geração de leads",
-    description: "Páginas estratégicas para campanhas de anúncios que convertem visitantes em contactos.",
-    features: [
-      "Design focado em conversão",
-      "Otimização para anúncios",
-      "Carregamento ultra-rápido",
-      "CTAs estratégicos e persuasivos",
-      "Integração com WhatsApp",
-      "Ideal para Facebook e Google Ads",
-    ],
-    price: "Projetos Premium",
-    highlight: false,
-  },
-  {
-    icon: Share2,
-    title: "Gestão de Social Media",
-    subtitle: "Estratégia de redes sociais",
-    description: "Gestão profissional das suas redes sociais para aumentar a visibilidade do seu negócio local.",
-    features: [
-      "Criação de conteúdo visual",
-      "Calendário editorial mensal",
-      "Gestão de Facebook e Instagram",
-      "Relatórios de resultados",
-      "Interação com seguidores",
-      "Estratégia de hashtags locais",
-    ],
-    price: "Planos Mensais",
-    highlight: false,
-  },
-  {
-    icon: TrendingUp,
-    title: "SEO Local",
-    subtitle: "Apareça no Google na sua região",
-    description: "Posicione o seu negócio nos primeiros resultados quando clientes procuram serviços na sua área.",
-    features: [
-      "Otimização para Google My Business",
-      "SEO para pesquisas locais",
-      "Palavras-chave da sua região",
-      "Otimização do site existente",
-      "Relatórios de posicionamento",
-      "Estratégia de longo prazo",
-    ],
-    price: "Consultoria",
-    highlight: false,
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const container = {
   hidden: { opacity: 0 },
@@ -89,19 +19,86 @@ const item = {
 };
 
 const Servicos = () => {
+  const { t, language } = useLanguage();
+  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
+
+  const services = [
+    {
+      icon: Globe,
+      title: t("servicesPage.service1Title"),
+      subtitle: t("servicesPage.service1Subtitle"),
+      description: t("servicesPage.service1Description"),
+      features: [
+        t("servicesPage.service1Feature1"),
+        t("servicesPage.service1Feature2"),
+        t("servicesPage.service1Feature3"),
+        t("servicesPage.service1Feature4"),
+        t("servicesPage.service1Feature5"),
+        t("servicesPage.service1Feature6"),
+      ],
+      price: t("servicesPage.service1Price"),
+      highlight: true,
+    },
+    {
+      icon: Rocket,
+      title: t("servicesPage.service2Title"),
+      subtitle: t("servicesPage.service2Subtitle"),
+      description: t("servicesPage.service2Description"),
+      features: [
+        t("servicesPage.service2Feature1"),
+        t("servicesPage.service2Feature2"),
+        t("servicesPage.service2Feature3"),
+        t("servicesPage.service2Feature4"),
+        t("servicesPage.service2Feature5"),
+        t("servicesPage.service2Feature6"),
+      ],
+      price: t("servicesPage.service2Price"),
+      highlight: false,
+    },
+    {
+      icon: Share2,
+      title: t("servicesPage.service3Title"),
+      subtitle: t("servicesPage.service3Subtitle"),
+      description: t("servicesPage.service3Description"),
+      features: [
+        t("servicesPage.service3Feature1"),
+        t("servicesPage.service3Feature2"),
+        t("servicesPage.service3Feature3"),
+        t("servicesPage.service3Feature4"),
+        t("servicesPage.service3Feature5"),
+        t("servicesPage.service3Feature6"),
+      ],
+      price: t("servicesPage.service3Price"),
+      highlight: false,
+    },
+    {
+      icon: TrendingUp,
+      title: t("servicesPage.service4Title"),
+      subtitle: t("servicesPage.service4Subtitle"),
+      description: t("servicesPage.service4Description"),
+      features: [
+        t("servicesPage.service4Feature1"),
+        t("servicesPage.service4Feature2"),
+        t("servicesPage.service4Feature3"),
+        t("servicesPage.service4Feature4"),
+        t("servicesPage.service4Feature5"),
+        t("servicesPage.service4Feature6"),
+      ],
+      price: t("servicesPage.service4Price"),
+      highlight: false,
+    },
+  ];
+
   return (
     <>
       <Helmet>
-        <title>Serviços | Criação de Sites desde 200€ | Império Web Lisboa</title>
-        <meta
-          name="description"
-          content="Criação de sites profissionais desde 200€ para negócios locais em Lisboa e Margem Sul. Landing pages, social media e SEO local. Contacte-nos."
-        />
-        <meta
-          name="keywords"
-          content="criação de sites margem sul, sites baratos portugal, landing pages lisboa, social media portugal, seo local lisboa"
-        />
+        <html lang={language === "pt" ? "pt-PT" : "en"} />
+        <title>{t("servicesPage.metaTitle")}</title>
+        <meta name="description" content={t("servicesPage.metaDescription")} />
         <link rel="canonical" href="https://imperioweb.pt/servicos" />
+        <link rel="alternate" hrefLang="pt-PT" href="https://imperioweb.pt/servicos" />
+        <link rel="alternate" hrefLang="en" href="https://imperioweb.pt/servicos" />
+        <meta property="og:locale" content={language === "pt" ? "pt_PT" : "en_US"} />
       </Helmet>
       <Layout>
         {/* Hero */}
@@ -115,14 +112,14 @@ const Servicos = () => {
               className="text-center max-w-3xl mx-auto"
             >
               <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-                Serviços para Negócios Locais
+                {t("servicesPage.badge")}
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-6">
-                Sites Profissionais{" "}
-                <span className="text-gradient">Desde 200€</span>
+                {t("servicesPage.headline")}{" "}
+                <span className="text-gradient">{t("servicesPage.headlineHighlight")}</span>
               </h1>
               <p className="text-lg text-muted-foreground mb-6">
-                Criamos sites profissionais focados em gerar contactos via WhatsApp para negócios locais em Lisboa e Margem Sul.
+                {t("servicesPage.description")}
               </p>
               <Button variant="whatsapp" size="lg" asChild>
                 <a
@@ -131,7 +128,7 @@ const Servicos = () => {
                   rel="noopener noreferrer"
                 >
                   <MessageCircle size={20} />
-                  Falar com um Especialista Agora
+                  {t("servicesPage.ctaButton")}
                 </a>
               </Button>
             </motion.div>
@@ -167,7 +164,7 @@ const Servicos = () => {
                         </div>
                         {service.highlight && (
                           <span className="px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-medium">
-                            Mais Popular
+                            {t("servicesPage.mostPopular")}
                           </span>
                         )}
                       </div>
@@ -188,7 +185,7 @@ const Servicos = () => {
                     {/* Right - Features */}
                     <div className="space-y-3">
                       <p className="text-sm font-medium text-muted-foreground mb-4">
-                        O que está incluído:
+                        {t("servicesPage.whatIsIncluded")}
                       </p>
                       {service.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-3">
@@ -201,11 +198,11 @@ const Servicos = () => {
                       <div className="pt-6">
                         <Button variant="hero" size="lg" asChild>
                           <a
-                            href={`https://wa.me/351910000000?text=${encodeURIComponent(`Olá! Tenho interesse no serviço: ${service.title}. Gostaria de saber mais informações.`)}`}
+                            href={`https://wa.me/351910000000?text=${encodeURIComponent(t("whatsapp.serviceMessage", { service: service.title }))}`}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            Quero Este Serviço
+                            {t("servicesPage.wantThisService")}
                             <ArrowRight size={18} />
                           </a>
                         </Button>
@@ -228,10 +225,10 @@ const Servicos = () => {
               className="text-center max-w-2xl mx-auto"
             >
               <h2 className="text-3xl md:text-4xl font-bold font-display mb-6">
-                Pronto para Ter <span className="text-gradient">Mais Contactos</span>?
+                {t("servicesPage.readyHeadline")} <span className="text-gradient">{t("servicesPage.readyHeadlineHighlight")}</span>?
               </h2>
               <p className="text-muted-foreground mb-8">
-                Fale connosco agora e receba uma proposta personalizada para o seu negócio em menos de 24 horas.
+                {t("servicesPage.readyDescription")}
               </p>
               <Button variant="whatsapp" size="xl" asChild>
                 <a
@@ -239,7 +236,7 @@ const Servicos = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Receber Proposta para o Meu Negócio
+                  {t("servicesPage.readyCta")}
                   <ArrowRight size={20} />
                 </a>
               </Button>
