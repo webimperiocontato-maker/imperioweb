@@ -12,28 +12,28 @@ const PortfolioSection = () => {
       niche: t("portfolio.project1Niche"),
       objective: t("portfolio.project1Objective"),
       result: t("portfolio.project1Result"),
-      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=400&fit=crop",
     },
     {
       title: t("portfolio.project2Title"),
       niche: t("portfolio.project2Niche"),
       objective: t("portfolio.project2Objective"),
       result: t("portfolio.project2Result"),
-      image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop",
     },
     {
       title: t("portfolio.project3Title"),
       niche: t("portfolio.project3Niche"),
       objective: t("portfolio.project3Objective"),
       result: t("portfolio.project3Result"),
-      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop",
     },
     {
       title: t("portfolio.project4Title"),
       niche: t("portfolio.project4Niche"),
       objective: t("portfolio.project4Objective"),
       result: t("portfolio.project4Result"),
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop",
     },
   ];
 
