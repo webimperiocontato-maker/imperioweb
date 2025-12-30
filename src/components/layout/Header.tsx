@@ -3,23 +3,24 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSelector from "@/components/LanguageSelector";
 import logoCrown from "@/assets/logo-crown.png";
-
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Serviços", href: "/servicos" },
-  { name: "Sobre", href: "/sobre" },
-  { name: "Contacto", href: "/contacto" },
-];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
 
-  const whatsappMessage = encodeURIComponent(
-    "Olá! Tenho um negócio local e gostaria de saber como funciona a criação de um site para gerar mais contactos."
-  );
+  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
+
+  const navLinks = [
+    { name: t("common.home"), href: "/" },
+    { name: t("common.services"), href: "/servicos" },
+    { name: t("common.about"), href: "/sobre" },
+    { name: t("common.contact"), href: "/contacto" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,28 +66,32 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* CTA Button */}
-        <div className="hidden md:block">
+        {/* Right Side: Language Selector + CTA */}
+        <div className="hidden md:flex items-center gap-4">
+          <LanguageSelector />
           <Button variant="hero" size="default" asChild>
             <a
               href={`https://wa.me/351910000000?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Falar com Especialista
+              {t("header.ctaButton")}
               <ArrowRight size={16} />
             </a>
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile: Language Selector + Menu Button */}
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageSelector />
+          <button
+            className="p-2 text-foreground"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -118,7 +123,7 @@ const Header = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Quero um Site que Venda
+                  {t("header.mobileCtaButton")}
                 </a>
               </Button>
             </nav>

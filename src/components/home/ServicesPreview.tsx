@@ -2,33 +2,7 @@ import { Globe, Rocket, Share2, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
-const services = [
-  {
-    icon: Globe,
-    title: "Criação de Sites",
-    description: "Sites para negócios locais com integração WhatsApp. Comece a receber contactos em dias.",
-    price: "Desde 200€",
-  },
-  {
-    icon: Rocket,
-    title: "Landing Pages",
-    description: "Páginas focadas em conversão para campanhas de anúncios e geração de leads.",
-    price: "Projetos Premium",
-  },
-  {
-    icon: Share2,
-    title: "Social Media",
-    description: "Gestão estratégica para aumentar visibilidade e atrair clientes nas redes sociais.",
-    price: "Planos Mensais",
-  },
-  {
-    icon: TrendingUp,
-    title: "SEO Local",
-    description: "Apareça no Google quando clientes procuram serviços na sua área.",
-    price: "Consultoria",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const container = {
   hidden: { opacity: 0 },
@@ -46,9 +20,35 @@ const item = {
 };
 
 const ServicesPreview = () => {
-  const whatsappMessage = encodeURIComponent(
-    "Olá! Tenho um negócio local e gostaria de saber como funciona a criação de um site para gerar mais contactos."
-  );
+  const { t } = useLanguage();
+  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
+
+  const services = [
+    {
+      icon: Globe,
+      title: t("services.service1Title"),
+      description: t("services.service1Description"),
+      price: t("services.service1Price"),
+    },
+    {
+      icon: Rocket,
+      title: t("services.service2Title"),
+      description: t("services.service2Description"),
+      price: t("services.service2Price"),
+    },
+    {
+      icon: Share2,
+      title: t("services.service3Title"),
+      description: t("services.service3Description"),
+      price: t("services.service3Price"),
+    },
+    {
+      icon: TrendingUp,
+      title: t("services.service4Title"),
+      description: t("services.service4Description"),
+      price: t("services.service4Price"),
+    },
+  ];
 
   return (
     <section className="section-padding bg-gradient-subtle">
@@ -62,13 +62,13 @@ const ServicesPreview = () => {
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-            Soluções para Negócios Locais
+            {t("services.badge")}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-display mb-4">
-            Sites que <span className="text-gradient">Geram Resultados</span>
+            {t("services.headline")} <span className="text-gradient">{t("services.headlineHighlight")}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Criação de sites na Margem Sul e Lisboa. Transformamos a sua presença digital em contactos reais para o seu negócio.
+            {t("services.description")}
           </p>
         </motion.div>
 
@@ -114,11 +114,11 @@ const ServicesPreview = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Falar com um Especialista Agora
+              {t("services.ctaButton")}
             </a>
           </Button>
           <p className="text-sm text-muted-foreground">
-            ou <Link to="/servicos" className="text-primary hover:underline">ver todos os serviços e preços</Link>
+            ou <Link to="/servicos" className="text-primary hover:underline">{t("common.seeAllServices")}</Link>
           </p>
         </motion.div>
       </div>

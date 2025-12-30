@@ -1,11 +1,11 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CTASection = () => {
-  const whatsappMessage = encodeURIComponent(
-    "Olá! Tenho um negócio local e gostaria de saber como funciona a criação de um site para gerar mais contactos."
-  );
+  const { t } = useLanguage();
+  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
 
   return (
     <section className="section-padding relative overflow-hidden">
@@ -23,18 +23,18 @@ const CTASection = () => {
         >
           {/* Pain Point */}
           <p className="text-primary font-medium mb-4">
-            Cansado de não ter presença online profissional?
+            {t("cta.painPoint")}
           </p>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-display mb-6">
-            Comece a Receber{" "}
-            <span className="text-gradient">Mais Contactos</span> Hoje
+            {t("cta.headline")}{" "}
+            <span className="text-gradient">{t("cta.headlineHighlight")}</span> {t("cta.headlineEnd")}
           </h2>
           <p className="text-lg text-muted-foreground mb-4">
-            Sites profissionais a partir de <span className="text-foreground font-semibold">200€</span> para negócios locais em Lisboa e Margem Sul.
+            {t("cta.description")} <span className="text-foreground font-semibold">{t("cta.descriptionPrice")}</span> {t("cta.descriptionEnd")}
           </p>
           <p className="text-muted-foreground mb-10">
-            Fale connosco agora e receba uma proposta personalizada em menos de 24 horas.
+            {t("cta.subDescription")}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -44,13 +44,13 @@ const CTASection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Quero um Site que Venda
+                {t("cta.ctaPrimary")}
                 <ArrowRight size={20} />
               </a>
             </Button>
             <Button variant="outline" size="xl" asChild>
               <a href="/contacto">
-                Receber Proposta para o Meu Negócio
+                {t("cta.ctaSecondary")}
               </a>
             </Button>
           </div>

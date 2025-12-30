@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { MapPin, Mail, Phone } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import logoCrown from "@/assets/logo-crown.png";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-card border-t border-border">
       <div className="container-custom section-padding">
@@ -9,55 +13,53 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg font-display">I</span>
-              </div>
+              <img src={logoCrown} alt="Império Web" className="w-8 h-8" />
               <span className="text-xl font-bold font-display text-foreground">
                 Império <span className="text-gradient">Web</span>
               </span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Agência digital especializada em criação de sites profissionais, landing pages de alta conversão e social media estratégico para negócios em Portugal.
+              {t("footer.description")}
             </p>
           </div>
 
           {/* Links */}
           <div className="space-y-4">
-            <h4 className="font-display font-semibold text-foreground">Navegação</h4>
+            <h4 className="font-display font-semibold text-foreground">{t("common.navigation")}</h4>
             <nav className="flex flex-col gap-2">
               <Link to="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Home
+                {t("common.home")}
               </Link>
               <Link to="/servicos" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Serviços
+                {t("common.services")}
               </Link>
               <Link to="/sobre" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Sobre Nós
+                {t("common.about")}
               </Link>
               <Link to="/contacto" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Contacto
+                {t("common.contact")}
               </Link>
             </nav>
           </div>
 
           {/* Serviços */}
           <div className="space-y-4">
-            <h4 className="font-display font-semibold text-foreground">Serviços</h4>
+            <h4 className="font-display font-semibold text-foreground">{t("footer.servicesTitle")}</h4>
             <nav className="flex flex-col gap-2">
-              <span className="text-sm text-muted-foreground">Criação de Sites</span>
-              <span className="text-sm text-muted-foreground">Landing Pages</span>
-              <span className="text-sm text-muted-foreground">Social Media</span>
-              <span className="text-sm text-muted-foreground">SEO & Marketing</span>
+              <span className="text-sm text-muted-foreground">{t("footer.service1")}</span>
+              <span className="text-sm text-muted-foreground">{t("footer.service2")}</span>
+              <span className="text-sm text-muted-foreground">{t("footer.service3")}</span>
+              <span className="text-sm text-muted-foreground">{t("footer.service4")}</span>
             </nav>
           </div>
 
           {/* Contacto */}
           <div className="space-y-4">
-            <h4 className="font-display font-semibold text-foreground">Contacto</h4>
+            <h4 className="font-display font-semibold text-foreground">{t("footer.contactTitle")}</h4>
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <MapPin size={16} className="text-primary flex-shrink-0" />
-                <span>Lisboa, Portugal</span>
+                <span>{t("footer.location")}</span>
               </div>
               <a 
                 href="mailto:info@imperioweb.pt" 
@@ -82,11 +84,11 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Império Web. Todos os direitos reservados.
+            © {new Date().getFullYear()} Império Web. {t("common.rightsReserved")}
           </p>
           <div className="flex items-center gap-6">
             <span className="text-sm text-muted-foreground">
-              Criação de Sites em Portugal
+              {t("common.creationInPortugal")}
             </span>
           </div>
         </div>

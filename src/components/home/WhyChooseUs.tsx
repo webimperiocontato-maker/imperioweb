@@ -1,38 +1,38 @@
 import { Check, Zap, Shield, HeartHandshake, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-
-const reasons = [
-  {
-    icon: Zap,
-    title: "Sites Prontos em Dias",
-    description: "Projetos entregues rapidamente para você começar a receber contactos o mais rápido possível.",
-  },
-  {
-    icon: MessageCircle,
-    title: "Integração WhatsApp",
-    description: "Botões de contacto direto que facilitam a comunicação com os seus potenciais clientes.",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Suporte Contínuo",
-    description: "Acompanhamento dedicado antes, durante e após a entrega do seu projeto.",
-  },
-];
-
-const features = [
-  "Sites para pequenos negócios em Portugal",
-  "Design responsivo para telemóvel",
-  "Otimização SEO para Google",
-  "Integração com WhatsApp",
-  "Sem mensalidades obrigatórias",
-  "Suporte em português",
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const WhyChooseUs = () => {
-  const whatsappMessage = encodeURIComponent(
-    "Olá! Tenho um negócio local e gostaria de saber como funciona a criação de um site para gerar mais contactos."
-  );
+  const { t } = useLanguage();
+  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
+
+  const reasons = [
+    {
+      icon: Zap,
+      title: t("whyChooseUs.reason1Title"),
+      description: t("whyChooseUs.reason1Description"),
+    },
+    {
+      icon: MessageCircle,
+      title: t("whyChooseUs.reason2Title"),
+      description: t("whyChooseUs.reason2Description"),
+    },
+    {
+      icon: HeartHandshake,
+      title: t("whyChooseUs.reason3Title"),
+      description: t("whyChooseUs.reason3Description"),
+    },
+  ];
+
+  const features = [
+    t("whyChooseUs.feature1"),
+    t("whyChooseUs.feature2"),
+    t("whyChooseUs.feature3"),
+    t("whyChooseUs.feature4"),
+    t("whyChooseUs.feature5"),
+    t("whyChooseUs.feature6"),
+  ];
 
   return (
     <section className="section-padding">
@@ -46,14 +46,14 @@ const WhyChooseUs = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
-              Agência Digital em Lisboa
+              {t("whyChooseUs.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-display mb-6">
-              Porquê Escolher a{" "}
-              <span className="text-gradient">Império Web</span>?
+              {t("whyChooseUs.headline")}{" "}
+              <span className="text-gradient">{t("whyChooseUs.headlineHighlight")}</span>?
             </h2>
             <p className="text-muted-foreground mb-8 text-lg">
-              Especialistas em criação de sites na Margem Sul e Lisboa. Ajudamos negócios locais a terem presença online profissional e a gerarem mais contactos.
+              {t("whyChooseUs.description")}
             </p>
 
             {/* Features List */}
@@ -81,7 +81,7 @@ const WhyChooseUs = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Receber Proposta para o Meu Negócio
+                {t("whyChooseUs.ctaButton")}
               </a>
             </Button>
           </motion.div>
