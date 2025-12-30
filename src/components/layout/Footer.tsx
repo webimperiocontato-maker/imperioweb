@@ -7,7 +7,7 @@ const Footer = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="bg-card border-t border-border pb-20 md:pb-0">
       <div className="container-custom section-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
@@ -25,19 +25,19 @@ const Footer = () => {
 
           {/* Links */}
           <div className="space-y-4">
-            <h4 className="font-display font-semibold text-foreground">{t("common.navigation")}</h4>
+            <h4 className="font-display font-semibold text-foreground">{t("footer.linksTitle")}</h4>
             <nav className="flex flex-col gap-2">
               <Link to="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                {t("common.home")}
+                {t("footer.link1")}
               </Link>
               <Link to="/servicos" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                {t("common.services")}
-              </Link>
-              <Link to="/sobre" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                {t("common.about")}
+                {t("footer.link2")}
               </Link>
               <Link to="/contacto" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                {t("common.contact")}
+                {t("footer.link4")}
+              </Link>
+              <Link to="/privacidade" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                {t("footer.link5")}
               </Link>
             </nav>
           </div>
@@ -46,10 +46,18 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-display font-semibold text-foreground">{t("footer.servicesTitle")}</h4>
             <nav className="flex flex-col gap-2">
-              <span className="text-sm text-muted-foreground">{t("footer.service1")}</span>
-              <span className="text-sm text-muted-foreground">{t("footer.service2")}</span>
-              <span className="text-sm text-muted-foreground">{t("footer.service3")}</span>
-              <span className="text-sm text-muted-foreground">{t("footer.service4")}</span>
+              <Link to="/servicos" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                {t("footer.service1")}
+              </Link>
+              <Link to="/servicos" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                {t("footer.service2")}
+              </Link>
+              <Link to="/servicos" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                {t("footer.service3")}
+              </Link>
+              <Link to="/servicos" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                {t("footer.service4")}
+              </Link>
             </nav>
           </div>
 
@@ -57,9 +65,12 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-display font-semibold text-foreground">{t("footer.contactTitle")}</h4>
             <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <MapPin size={16} className="text-primary flex-shrink-0" />
-                <span>{t("footer.location")}</span>
+              <div className="flex items-start gap-3 text-sm text-muted-foreground">
+                <MapPin size={16} className="text-primary flex-shrink-0 mt-0.5" />
+                <div>
+                  <p>{t("footer.location")}</p>
+                  <p className="text-xs">{t("footer.locationSub")}</p>
+                </div>
               </div>
               <a 
                 href="mailto:info@imperioweb.pt" 
