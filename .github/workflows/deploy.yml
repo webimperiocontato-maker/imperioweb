@@ -41,7 +41,22 @@ jobs:
         run: npm run build
 
       - name: Pre-render pages with react-snap
-        run: npx react-snap
+        run: |
+          node -e "
+            const { run } = require('react-snap');
+            run({
+              source: 'dist',
+              destination: 'dist',
+              include: ['/', '/servicos', '/contacto', '/portfolio', '/sobre'],
+              puppeteerArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
+              crawl: false,
+              waitFor: 1000,
+              skipThirdPartyRequests: true,
+              inlineCss: false,
+              removeBlobs: true,
+              headless: true
+            }).then(() => console.log('✅ Pre-render complete')).catch(e => { console.error(e); process.exit(1); });
+          "
         env:
           CI: true
 
