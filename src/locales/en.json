@@ -340,8 +340,8 @@
     "service3": "Appear on Google (SEO)",
     "service4": "Maintenance & Support",
     "contactTitle": "Contact",
-    "location": "Costa da Caparica, Portugal",
-    "locationSub": "Serving Lisbon, South Bank, and the whole country",
+    "location": "Portugal",
+    "locationSub": "Serving Lisbon, Porto, and all of Europe",
     "linksTitle": "Links",
     "link1": "Home",
     "link2": "Services",
@@ -362,9 +362,9 @@
     "ariaLabel": "Select language"
   },
   "seo": {
-    "homeTitle": "Professional Website Creation in Portugal | From €200 | Império Web",
-    "homeDescription": "We create professional websites that bring customers to your business. Fast websites, easy to find on Google, with support included. From €200. Lisbon, South Bank, and nationwide.",
-    "homeKeywords": "website creation portugal, make website, websites for businesses, cheap websites portugal, appear on google, seo portugal"
+    "homeTitle": "Website Creation in Lisbon and Porto | From €200 | Império Web",
+    "homeDescription": "We create professional websites that bring customers to your business. Fast websites, Google-optimized, with support included. From €200. Lisbon, Porto, Portugal and Europe.",
+    "homeKeywords": "website creation lisbon, website creation porto, web design portugal, websites for businesses, landing pages, seo portugal, websites europe"
   },
   "portfolioPage": {
     "metaTitle": "Portfolio | Website and Sales Page Examples | Império Web",
@@ -537,8 +537,8 @@
     "talkTitle": "Let's Talk?",
     "talkDescription": "We're ready to help your business have more online presence and more customers.",
     "locationTitle": "Location",
-    "locationText": "Costa da Caparica, Portugal",
-    "locationSubText": "Serving Lisbon, South Bank, and nationwide",
+    "locationText": "Portugal",
+    "locationSubText": "Serving Lisbon, Porto, and the European Union",
     "emailTitle": "Email",
     "whatsappTitle": "WhatsApp",
     "quickResponseTitle": "Prefer a Faster Response?",
@@ -571,7 +571,7 @@
   },
   "schema": {
     "businessName": "Império Web",
-    "businessDescription": "Professional website creation for businesses in Portugal. Fast websites, easy to find on Google, focused on bringing customers.",
-    "areaServed": "Portugal, Lisbon, Costa da Caparica, Almada, South Bank"
+    "businessDescription": "Professional website creation for businesses in Portugal and Europe. Fast websites, Google-optimized, focused on bringing customers. Lisbon, Porto, and the European Union.",
+    "areaServed": "Portugal, Lisbon, Porto, Europe, European Union"
   }
 }

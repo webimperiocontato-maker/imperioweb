@@ -1,73 +1,157 @@
-# Welcome to your Lovable project
+# Império Web — Site Institucional
 
-## Project info
+Site oficial da Império Web, agência de criação de sites para empresas em Portugal e Europa.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**URL Produção**: https://imperioweb.eu
 
-## How can I edit this code?
+## Tecnologias
 
-There are several ways of editing your application.
+- **Frontend**: Vite + React + TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui
+- **Animations**: Framer Motion
+- **SEO**: react-helmet-async + JSON-LD Schema
+- **Pre-rendering (SSG)**: react-snap
+- **Deploy**: GitHub Pages
 
-**Use Lovable**
+## Como Rodar Localmente
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
+# 1. Clonar o repositório
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# 2. Instalar dependências
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 3. Rodar em desenvolvimento
 npm run dev
+
+# Aceder em http://localhost:8080
 ```
 
-**Edit a file directly in GitHub**
+## Como Buildar
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+# Build completo com pre-render
+npm run build
 
-**Use GitHub Codespaces**
+# O react-snap roda automaticamente via postbuild
+# Isso gera HTML estático para cada rota
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Verificar Pre-render (SSG)
 
-## What technologies are used for this project?
+Após o build, execute o script de verificação:
 
-This project is built with:
+```bash
+node scripts/verify-prerender.js
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Este script verifica se:
+- `dist/index.html` contém H1, textos e CTAs
+- `dist/servicos/index.html` existe e tem conteúdo
+- `dist/contacto/index.html` existe e tem conteúdo
+- O body NÃO é apenas `<div id="root"></div>`
 
-## How can I deploy this project?
+### Verificação Manual
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+```bash
+# Após build, verificar view-source
+cat dist/index.html | grep -E "<h1|Império|WhatsApp|Pedir"
 
-## Can I connect a custom domain to my Lovable project?
+# Verificar tamanho do HTML (deve ser >50KB se pre-renderizado)
+ls -la dist/index.html
+ls -la dist/servicos/index.html
+ls -la dist/contacto/index.html
+```
 
-Yes, you can!
+## Rotas Pre-renderizadas
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+| Rota | Arquivo |
+|------|---------|
+| `/` | `dist/index.html` |
+| `/servicos` | `dist/servicos/index.html` |
+| `/contacto` | `dist/contacto/index.html` |
+| `/portfolio` | `dist/portfolio/index.html` |
+| `/sobre` | `dist/sobre/index.html` |
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Deploy (GitHub Pages)
+
+O deploy é automático via GitHub Actions:
+
+1. Push para branch `main`
+2. Workflow `.github/workflows/deploy.yml` executa:
+   - `npm ci`
+   - `npm run build` (inclui react-snap via postbuild)
+   - `node scripts/verify-prerender.js` (valida HTML)
+   - Cria `404.html` fallback
+   - Deploy para GitHub Pages
+
+### Configuração GoDaddy (DNS)
+
+Para o domínio `imperioweb.eu`:
+
+```
+Tipo    Nome    Valor
+A       @       185.158.133.1
+A       www     185.158.133.1
+```
+
+## Checklist Pós-Deploy
+
+### 1. Verificar HTML (view-source)
+
+- [ ] `view-source:https://imperioweb.eu/` — tem H1, textos, links no body?
+- [ ] `view-source:https://imperioweb.eu/servicos` — conteúdo real?
+- [ ] `view-source:https://imperioweb.eu/contacto` — conteúdo real?
+
+### 2. Teste com JavaScript Desligado
+
+- [ ] Abrir DevTools → Settings → Disable JavaScript
+- [ ] Recarregar página — ainda mostra conteúdo principal?
+
+### 3. SEO & Schema
+
+- [ ] [Rich Results Test](https://search.google.com/test/rich-results) — JSON-LD válido?
+- [ ] [PageSpeed Insights](https://pagespeed.web.dev/) — Performance OK?
+- [ ] `/robots.txt` acessível?
+- [ ] `/sitemap.xml` acessível e válido?
+
+### 4. Rotas e 404
+
+- [ ] Recarregar `/servicos` não dá 404
+- [ ] Recarregar `/contacto` não dá 404
+- [ ] Rota inexistente mostra página 404 correta
+
+## Estrutura de Arquivos Importantes
+
+```
+├── .github/workflows/deploy.yml  # GitHub Actions para deploy
+├── scripts/verify-prerender.js   # Verificação automática do SSG
+├── snap.config.cjs               # Configuração react-snap
+├── public/
+│   ├── CNAME                     # Domínio custom
+│   ├── robots.txt
+│   └── sitemap.xml
+├── src/
+│   ├── components/seo/           # Schema JSON-LD
+│   ├── locales/                  # Traduções PT/EN
+│   └── pages/                    # Páginas (Index, Servicos, etc.)
+└── dist/                         # Build output (após npm run build)
+    ├── index.html                # Home pre-renderizada
+    ├── servicos/index.html       # Serviços pre-renderizada
+    └── contacto/index.html       # Contacto pre-renderizada
+```
+
+## Atualizações Futuras
+
+Para adicionar novas rotas ao pre-render:
+
+1. Editar `snap.config.cjs` → adicionar rota ao array `include`
+2. Editar `public/sitemap.xml` → adicionar URL
+3. Editar `scripts/verify-prerender.js` → adicionar à verificação (opcional)
+
+## Suporte
+
+- **Lovable**: https://lovable.dev
+- **Email**: info@imperioweb.eu

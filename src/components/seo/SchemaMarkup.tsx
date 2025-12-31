@@ -8,13 +8,13 @@ interface SchemaMarkupProps {
 const SchemaMarkup = ({ includeFAQ = false }: SchemaMarkupProps) => {
   const { t, language } = useLanguage();
 
-  // Organization/LocalBusiness Schema
+  // Organization/ProfessionalService Schema - Europe focused
   const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["ProfessionalService", "LocalBusiness"],
     "@id": "https://imperioweb.eu/#organization",
     name: t("schema.businessName"),
-    alternateName: ["Império Web", "ImperioWeb", "Império Web EU"],
+    alternateName: ["Império Web", "ImperioWeb", "Império Web EU", "Imperio Web Portugal"],
     description: t("schema.businessDescription"),
     url: "https://imperioweb.eu",
     logo: "https://imperioweb.eu/logo.png",
@@ -23,8 +23,10 @@ const SchemaMarkup = ({ includeFAQ = false }: SchemaMarkupProps) => {
     email: "info@imperioweb.eu",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Costa da Caparica",
-      addressRegion: "Setúbal",
+      streetAddress: "Costa da Caparica",
+      addressLocality: "Almada",
+      addressRegion: "Lisboa",
+      postalCode: "2825",
       addressCountry: "PT",
     },
     geo: {
@@ -38,23 +40,54 @@ const SchemaMarkup = ({ includeFAQ = false }: SchemaMarkupProps) => {
         name: "Portugal",
       },
       {
+        "@type": "Continent",
+        name: "Europe",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "European Union",
+      },
+      {
         "@type": "City",
-        name: "Lisboa",
+        name: "Lisbon",
+        alternateName: "Lisboa",
+      },
+      {
+        "@type": "City",
+        name: "Porto",
       },
       {
         "@type": "City",
         name: "Almada",
       },
       {
-        "@type": "Place",
-        name: "Costa da Caparica",
+        "@type": "City",
+        name: "Cascais",
       },
       {
-        "@type": "Place",
-        name: "Margem Sul",
+        "@type": "City",
+        name: "Sintra",
+      },
+      {
+        "@type": "City",
+        name: "Setúbal",
+      },
+      {
+        "@type": "City",
+        name: "Braga",
+      },
+      {
+        "@type": "City",
+        name: "Coimbra",
       },
     ],
+    serviceArea: {
+      "@type": "GeoShape",
+      name: "Portugal and European Union",
+    },
     priceRange: "€€",
+    currenciesAccepted: "EUR",
+    paymentAccepted: "Bank Transfer, MBWay",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -66,31 +99,47 @@ const SchemaMarkup = ({ includeFAQ = false }: SchemaMarkupProps) => {
       "https://www.facebook.com/imperioweb.eu",
       "https://www.linkedin.com/company/imperioweb",
     ],
+    knowsLanguage: ["pt-PT", "en"],
+    slogan: language === "pt" ? "Sites que trazem clientes" : "Websites that bring customers",
   };
 
-  // Service Schema
+  // Service Schema - Europe focused
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "Web Development",
     provider: {
-      "@type": "LocalBusiness",
+      "@type": "ProfessionalService",
       name: "Império Web",
+      "@id": "https://imperioweb.eu/#organization",
     },
-    areaServed: {
-      "@type": "Country",
-      name: "Portugal",
+    areaServed: [
+      { "@type": "Country", name: "Portugal" },
+      { "@type": "Continent", name: "Europe" },
+      { "@type": "AdministrativeArea", name: "European Union" },
+      { "@type": "City", name: "Lisbon" },
+      { "@type": "City", name: "Porto" },
+    ],
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceLocation: {
+        "@type": "Place",
+        name: "Portugal",
+      },
+      availableLanguage: ["Portuguese", "English"],
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Serviços de Criação Web",
+      name: language === "pt" ? "Serviços de Criação Web" : "Web Development Services",
       itemListElement: [
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Criação de Sites",
-            description: "Sites institucionais e comerciais profissionais",
+            name: language === "pt" ? "Criação de Sites" : "Website Creation",
+            description: language === "pt" 
+              ? "Sites profissionais para empresas em Portugal e Europa" 
+              : "Professional websites for businesses in Portugal and Europe",
           },
           priceSpecification: {
             "@type": "PriceSpecification",
@@ -98,13 +147,16 @@ const SchemaMarkup = ({ includeFAQ = false }: SchemaMarkupProps) => {
             priceCurrency: "EUR",
             minPrice: "200",
           },
+          eligibleRegion: ["PT", "EU"],
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
             name: "Landing Pages",
-            description: "Páginas de alta conversão para campanhas de anúncios",
+            description: language === "pt" 
+              ? "Páginas de alta conversão para campanhas de anúncios" 
+              : "High-conversion pages for ad campaigns",
           },
           priceSpecification: {
             "@type": "PriceSpecification",
@@ -112,22 +164,29 @@ const SchemaMarkup = ({ includeFAQ = false }: SchemaMarkupProps) => {
             priceCurrency: "EUR",
             minPrice: "200",
           },
+          eligibleRegion: ["PT", "EU"],
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "SEO Local",
-            description: "Otimização para pesquisas locais e Google My Business",
+            name: language === "pt" ? "SEO e Google" : "SEO & Google",
+            description: language === "pt" 
+              ? "Otimização para pesquisas locais e internacionais" 
+              : "Optimization for local and international searches",
           },
+          eligibleRegion: ["PT", "EU"],
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Manutenção e Suporte",
-            description: "Atualizações, backups e suporte técnico contínuo",
+            name: language === "pt" ? "Manutenção e Suporte" : "Maintenance & Support",
+            description: language === "pt" 
+              ? "Atualizações, backups e suporte técnico contínuo" 
+              : "Updates, backups, and ongoing technical support",
           },
+          eligibleRegion: ["PT", "EU"],
         },
       ],
     },

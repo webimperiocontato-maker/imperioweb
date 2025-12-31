@@ -340,8 +340,8 @@
     "service3": "Aparecer no Google (SEO)",
     "service4": "Manutenção e Suporte",
     "contactTitle": "Contacto",
-    "location": "Costa da Caparica, Portugal",
-    "locationSub": "Servindo Lisboa, Margem Sul e todo o país",
+    "location": "Portugal",
+    "locationSub": "Servindo Lisboa, Porto e toda a Europa",
     "linksTitle": "Ligações",
     "link1": "Início",
     "link2": "Serviços",
@@ -362,9 +362,9 @@
     "ariaLabel": "Selecionar idioma"
   },
   "seo": {
-    "homeTitle": "Criação de Sites Profissionais em Portugal | Desde 200€ | Império Web",
-    "homeDescription": "Criamos sites profissionais que trazem clientes para o seu negócio. Sites rápidos, fáceis de encontrar no Google e com suporte incluído. Desde 200€. Lisboa, Margem Sul e todo o país.",
-    "homeKeywords": "criação de sites portugal, fazer site, sites para empresas, sites para negócios, sites baratos portugal, aparecer no google, seo portugal"
+    "homeTitle": "Criação de Sites em Lisboa e Porto | Desde 200€ | Império Web",
+    "homeDescription": "Criamos sites profissionais que trazem clientes para o seu negócio. Sites rápidos, otimizados para Google, com suporte incluído. Desde 200€. Lisboa, Porto, Portugal e Europa.",
+    "homeKeywords": "criação de sites lisboa, criação de sites porto, web design portugal, sites para empresas, landing pages, seo portugal, sites europa"
   },
   "portfolioPage": {
     "metaTitle": "Portfólio | Exemplos de Sites e Páginas de Vendas | Império Web",
@@ -537,8 +537,8 @@
     "talkTitle": "Vamos Conversar?",
     "talkDescription": "Estamos prontos para ajudar o seu negócio a ter mais presença online e mais clientes.",
     "locationTitle": "Localização",
-    "locationText": "Costa da Caparica, Portugal",
-    "locationSubText": "Servindo Lisboa, Margem Sul e todo o país",
+    "locationText": "Portugal",
+    "locationSubText": "Servindo Lisboa, Porto e toda a União Europeia",
     "emailTitle": "Email",
     "whatsappTitle": "WhatsApp",
     "quickResponseTitle": "Prefere uma Resposta Mais Rápida?",
@@ -571,7 +571,7 @@
   },
   "schema": {
     "businessName": "Império Web",
-    "businessDescription": "Criação de sites profissionais para negócios em Portugal. Sites rápidos, fáceis de encontrar no Google e focados em trazer clientes.",
-    "areaServed": "Portugal, Lisboa, Costa da Caparica, Almada, Margem Sul"
+    "businessDescription": "Criação de sites profissionais para empresas em Portugal e Europa. Sites rápidos, otimizados para Google, focados em trazer clientes. Lisboa, Porto e toda a União Europeia.",
+    "areaServed": "Portugal, Lisboa, Porto, Europa, União Europeia"
   }
 }
