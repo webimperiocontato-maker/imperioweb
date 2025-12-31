@@ -44,14 +44,21 @@ npm run build
 Após o build, execute o script de verificação:
 
 ```bash
+# Usando npm script (recomendado)
+npm run verify:ssg
+
+# Ou diretamente
 node scripts/verify-prerender.js
 ```
 
 Este script verifica se:
-- `dist/index.html` contém H1, textos e CTAs
-- `dist/servicos/index.html` existe e tem conteúdo
-- `dist/contacto/index.html` existe e tem conteúdo
+- `dist/index.html` contém H1, textos e CTAs (mínimo 5000 chars no body)
+- `dist/servicos/index.html` existe e tem conteúdo (mínimo 3000 chars)
+- `dist/contacto/index.html` existe e tem conteúdo (mínimo 2000 chars)
 - O body NÃO é apenas `<div id="root"></div>`
+- Links, parágrafos e CTAs existem no HTML
+
+**Se a verificação falhar, o build NÃO deve ser deployed.**
 
 ### Verificação Manual
 

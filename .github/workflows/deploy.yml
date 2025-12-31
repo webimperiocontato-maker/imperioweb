@@ -1,6 +1,12 @@
-# Deploy to GitHub Pages with pre-rendering (SSG)
-# This workflow builds the site, pre-renders HTML with react-snap, 
-# verifies the output, and deploys to GitHub Pages.
+# Deploy to GitHub Pages with SSG Pre-rendering
+# ============================================
+# This workflow:
+# 1. Builds the Vite+React app
+# 2. Pre-renders HTML with react-snap (SSG)
+# 3. Verifies pre-rendered content exists
+# 4. Deploys ONLY if verification passes
+#
+# After deployment, view-source should show real HTML content.
 name: Deploy to GitHub Pages
 
 on:
@@ -41,19 +47,25 @@ jobs:
         env:
           CI: true
 
-      - name: Verify pre-rendered HTML
-        run: node scripts/verify-prerender.js
+      - name: Verify pre-rendered HTML (fails build if empty)
+        run: |
+          echo "Running SSG verification..."
+          node scripts/verify-prerender.js
+          if [ $? -ne 0 ]; then
+            echo "❌ SSG verification failed. Build aborted."
+            exit 1
+          fi
 
-      - name: Create 404.html fallback for SPA routes
+      - name: Create 404.html fallback
         run: cp dist/index.html dist/404.html
 
-      - name: Create route-specific 404 fallbacks
+      - name: Debug - Show dist structure
         run: |
-          for dir in dist/servicos dist/contacto dist/portfolio dist/sobre; do
-            if [ -d "$dir" ]; then
-              cp dist/404.html "$dir/404.html" 2>/dev/null || true
-            fi
-          done
+          echo "=== Dist directory structure ==="
+          find dist -type f -name "*.html" | head -20
+          echo ""
+          echo "=== Home page body preview (first 500 chars) ==="
+          grep -oP '<body[^>]*>\K.*?(?=</body>)' dist/index.html | head -c 500 || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -73,3 +85,12 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      
+      - name: Deployment Complete
+        run: |
+          echo "✅ Deployment complete!"
+          echo ""
+          echo "Verify pre-rendered content:"
+          echo "  view-source:${{ steps.deployment.outputs.page_url }}"
+          echo "  view-source:${{ steps.deployment.outputs.page_url }}servicos"
+          echo "  view-source:${{ steps.deployment.outputs.page_url }}contacto"
