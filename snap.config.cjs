@@ -1,9 +1,8 @@
-// react-snap configuration for robust SSG pre-rendering
-// This generates static HTML files with real content in the body
+// react-snap configuration for SSG pre-rendering
+// Generates static HTML files with real content
 module.exports = {
   source: "dist",
   destination: "dist",
-  // Routes to pre-render with static HTML
   include: [
     "/",
     "/servicos",
@@ -11,44 +10,23 @@ module.exports = {
     "/portfolio",
     "/sobre"
   ],
-  // Minify HTML output
-  minifyHtml: {
-    collapseWhitespace: true,
-    removeComments: true,
-  },
-  // Puppeteer configuration for CI/CD environments
+  // Puppeteer args for CI environments (Ubuntu runners)
   puppeteerArgs: [
     "--no-sandbox",
     "--disable-setuid-sandbox",
     "--disable-dev-shm-usage",
-    "--disable-accelerated-2d-canvas",
-    "--disable-gpu",
-    "--single-process"
+    "--disable-gpu"
   ],
-  puppeteerExecutablePath: undefined,
-  // Skip external requests for faster builds
-  skipThirdPartyRequests: true,
-  // Don't crawl, just render specified routes
+  // Don't crawl, render only specified routes
   crawl: false,
-  // Viewport for rendering
-  viewport: {
-    width: 1200,
-    height: 800,
-  },
-  // Use headless Chrome
-  headless: true,
-  // Don't inline CSS (can cause issues with hydration)
+  // Wait for React to render
+  waitFor: 1000,
+  // Skip external requests
+  skipThirdPartyRequests: true,
+  // Don't inline CSS
   inlineCss: false,
-  // Clean up blob URLs
+  // Clean up
   removeBlobs: true,
-  // Fix webpack/vite chunk issues
-  fixWebpackChunksIssue: true,
-  // Wait for React to finish rendering (increased for complex pages)
-  waitFor: 500,
-  // Ensure external scripts load
-  externalServer: false,
-  // Save each route as index.html in subfolder
-  saveAs: "html",
-  // Ensure proper hydration
-  asyncScriptTags: true,
+  // Headless mode
+  headless: true
 };
