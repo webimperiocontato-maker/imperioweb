@@ -1,4 +1,6 @@
-# Deploy to GitHub Pages with pre-rendering
+# Deploy to GitHub Pages with pre-rendering (SSG)
+# This workflow builds the site, pre-renders HTML with react-snap, 
+# verifies the output, and deploys to GitHub Pages.
 name: Deploy to GitHub Pages
 
 on:
@@ -31,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build Vite app
         run: npm run build
 
       - name: Pre-render pages with react-snap
@@ -39,8 +41,19 @@ jobs:
         env:
           CI: true
 
-      - name: Create 404.html fallback
+      - name: Verify pre-rendered HTML
+        run: node scripts/verify-prerender.js
+
+      - name: Create 404.html fallback for SPA routes
         run: cp dist/index.html dist/404.html
+
+      - name: Create route-specific 404 fallbacks
+        run: |
+          for dir in dist/servicos dist/contacto dist/portfolio dist/sobre; do
+            if [ -d "$dir" ]; then
+              cp dist/404.html "$dir/404.html" 2>/dev/null || true
+            fi
+          done
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

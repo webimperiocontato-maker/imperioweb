@@ -100,14 +100,14 @@ const Footer = () => {
               </a>
             </div>
             
-            {/* Áreas Atendidas - SEO Local */}
+            {/* Áreas Atendidas - SEO Local + Europa */}
             <div className="pt-2 border-t border-border/50">
               <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
                 <Globe size={12} className="text-primary" />
                 <span className="font-medium">Áreas Atendidas:</span>
               </div>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Lisboa, Almada, Costa da Caparica, Margem Sul, Setúbal, Cascais, Sintra, Porto, Braga, Coimbra e todo Portugal. Serviço remoto para Europa.
+                Lisboa, Porto, Braga, Coimbra, Almada, Cascais, Sintra, Setúbal e todo Portugal. Serviço remoto para empresas na União Europeia.
               </p>
             </div>
           </div>
