@@ -1,22 +1,12 @@
-import { StrictMode } from "react";
-import { createRoot, hydrateRoot } from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
+import { ViteReactSSG } from "vite-react-ssg";
+import { routes } from "./routes";
 
-const rootElement = document.getElementById("root")!;
-
-// Use hydrate if pre-rendered content exists (react-snap)
-if (rootElement.hasChildNodes()) {
-  hydrateRoot(
-    rootElement,
-    <StrictMode>
-      <App />
-    </StrictMode>
-  );
-} else {
-  createRoot(rootElement).render(
-    <StrictMode>
-      <App />
-    </StrictMode>
-  );
-}
+export const createRoot = ViteReactSSG(
+  {
+    routes,
+    basename: import.meta.env.BASE_URL,
+  },
+  () => {
+    // no-op
+  }
+);
