@@ -183,11 +183,9 @@ if (hasErrors) {
   console.error('The HTML files do not contain real content in the body.');
   console.error('\nDO NOT DEPLOY this build - view-source will show empty #root.\n');
   console.error('To fix this:');
-  console.error('  1. Ensure react-snap is installed: npm install react-snap');
-  console.error('  2. Add postbuild script to package.json: "postbuild": "react-snap"');
-  console.error('  3. Run: npm run build');
-  console.error('  4. Check snap.config.cjs configuration');
-  console.error('  5. Run this script again: npm run verify:ssg\n');
+  console.error('  1. Ensure vite-react-ssg is installed');
+  console.error('  2. Build with: npx vite-react-ssg build');
+  console.error('  3. Run this script again: node scripts/verify-prerender.js\n');
   process.exit(1);
 } else {
   console.log('\n✅ VERIFICATION PASSED\n');

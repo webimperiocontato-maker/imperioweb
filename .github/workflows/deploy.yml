@@ -1,10 +1,9 @@
 # Deploy to GitHub Pages with SSG Pre-rendering
 # ============================================
 # This workflow:
-# 1. Builds the Vite+React app
-# 2. Pre-renders HTML with react-snap (SSG)
-# 3. Verifies pre-rendered content exists
-# 4. Deploys ONLY if verification passes
+# 1. Builds the Vite+React app with vite-react-ssg (SSG)
+# 2. Verifies pre-rendered content exists
+# 3. Deploys ONLY if verification passes
 name: Deploy to GitHub Pages
 
 on:
