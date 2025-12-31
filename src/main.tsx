@@ -1,12 +1,10 @@
-import { ViteReactSSG } from "vite-react-ssg";
-import { routes } from "./routes";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App.tsx";
+import "./index.css";
 
-export const createRoot = ViteReactSSG(
-  {
-    routes,
-    basename: import.meta.env.BASE_URL,
-  },
-  () => {
-    // no-op
-  }
+createRoot(document.getElementById("root")!).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 );

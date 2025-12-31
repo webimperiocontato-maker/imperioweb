@@ -1,9 +1,6 @@
-# Deploy to GitHub Pages with SSG Pre-rendering
-# ============================================
-# This workflow:
-# 1. Builds the Vite+React app with vite-react-ssg (SSG)
-# 2. Verifies pre-rendered content exists
-# 3. Deploys ONLY if verification passes
+# Deploy to GitHub Pages (SPA)
+# ============================
+# Standard Vite SPA deployment with 404.html fallback for client-side routing
 name: Deploy to GitHub Pages
 
 on:
@@ -36,23 +33,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Vite app (SSG)
-        run: VITE_PRERENDER=true npx vite-react-ssg build
-
-      - name: Create 404.html fallback
-        run: cp dist/index.html dist/404.html
-
-      - name: Verify pre-rendered HTML
-        run: node scripts/verify-prerender.js
-
-      - name: Debug - Show dist structure
-        if: always()
-        run: |
-          echo "=== Dist directory structure ==="
-          find dist -type f -name "*.html" | head -20
-          echo ""
-          echo "=== Home page body size ==="
-          wc -c dist/index.html || echo "index.html not found"
+      - name: Build Vite app
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

@@ -49,7 +49,7 @@ const Index = () => {
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Império Web" />
         <meta name="geo.region" content="PT" />
-        <meta name="geo.placename" content="Costa da Caparica" />
+        <meta name="geo.placename" content="Lisboa, Portugal" />
       </Helmet>
       
       <SchemaMarkup includeFAQ={true} />
