@@ -37,28 +37,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Vite app
-        run: npm run build
-
-      - name: Pre-render pages with react-snap
-        run: |
-          node -e "
-            const { run } = require('react-snap');
-            run({
-              source: 'dist',
-              destination: 'dist',
-              include: ['/', '/servicos', '/contacto', '/portfolio', '/sobre'],
-              puppeteerArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
-              crawl: false,
-              waitFor: 1000,
-              skipThirdPartyRequests: true,
-              inlineCss: false,
-              removeBlobs: true,
-              headless: true
-            }).then(() => console.log('✅ Pre-render complete')).catch(e => { console.error(e); process.exit(1); });
-          "
-        env:
-          CI: true
+      - name: Build Vite app (SSG)
+        run: VITE_PRERENDER=true npx vite-react-ssg build
 
       - name: Create 404.html fallback
         run: cp dist/index.html dist/404.html
