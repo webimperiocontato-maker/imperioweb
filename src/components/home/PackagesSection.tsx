@@ -1,4 +1,4 @@
-import { Check, ArrowRight, MessageCircle, Sparkles } from "lucide-react";
+import { Check, ArrowRight, MessageCircle, Sparkles, Clock, RefreshCw, Headphones, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -13,6 +13,9 @@ const PackagesSection = () => {
       description: t("packages.starterDesc"),
       price: t("packages.starterPrice"),
       priceNote: t("packages.starterPriceNote"),
+      delivery: "5-7 dias",
+      revisions: "2 revisões",
+      support: "30 dias",
       features: [
         t("packages.starterF1"),
         t("packages.starterF2"),
@@ -27,6 +30,9 @@ const PackagesSection = () => {
       description: t("packages.growthDesc"),
       price: t("packages.growthPrice"),
       priceNote: t("packages.growthPriceNote"),
+      delivery: "10-15 dias",
+      revisions: "3 revisões",
+      support: "60 dias",
       features: [
         t("packages.growthF1"),
         t("packages.growthF2"),
@@ -42,6 +48,9 @@ const PackagesSection = () => {
       description: t("packages.premiumDesc"),
       price: t("packages.premiumPrice"),
       priceNote: t("packages.premiumPriceNote"),
+      delivery: "7-14 dias",
+      revisions: "Ilimitadas",
+      support: "90 dias",
       features: [
         t("packages.premiumF1"),
         t("packages.premiumF2"),
@@ -49,10 +58,22 @@ const PackagesSection = () => {
         t("packages.premiumF4"),
         t("packages.premiumF5"),
         t("packages.premiumF6"),
-        t("packages.premiumF7"),
       ],
       highlighted: false,
     },
+  ];
+
+  const comparisonFeatures = [
+    { feature: "Design personalizado", starter: true, growth: true, premium: true },
+    { feature: "Funciona no telemóvel", starter: true, growth: true, premium: true },
+    { feature: "Botão WhatsApp", starter: true, growth: true, premium: true },
+    { feature: "Formulário de contacto", starter: true, growth: true, premium: true },
+    { feature: "SEO básico", starter: true, growth: true, premium: true },
+    { feature: "Ficha Google configurada", starter: false, growth: true, premium: true },
+    { feature: "SEO avançado", starter: false, growth: true, premium: true },
+    { feature: "Textos profissionais", starter: false, growth: false, premium: true },
+    { feature: "Otimizado para anúncios", starter: false, growth: false, premium: true },
+    { feature: "Analytics configurado", starter: false, growth: true, premium: true },
   ];
 
   return (
@@ -75,7 +96,8 @@ const PackagesSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+        {/* Package Cards */}
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
           {packages.map((pkg, index) => (
             <motion.div
               key={index}
@@ -108,6 +130,22 @@ const PackagesSection = () => {
                   {pkg.price}
                 </span>
                 <span className="text-sm text-muted-foreground ml-2">{pkg.priceNote}</span>
+              </div>
+
+              {/* Delivery, Revisions, Support */}
+              <div className="grid grid-cols-3 gap-2 mb-6 p-3 rounded-lg bg-background/50 border border-border/50">
+                <div className="text-center">
+                  <Clock size={14} className="text-primary mx-auto mb-1" />
+                  <p className="text-xs text-muted-foreground">{pkg.delivery}</p>
+                </div>
+                <div className="text-center border-x border-border/50">
+                  <RefreshCw size={14} className="text-primary mx-auto mb-1" />
+                  <p className="text-xs text-muted-foreground">{pkg.revisions}</p>
+                </div>
+                <div className="text-center">
+                  <Headphones size={14} className="text-primary mx-auto mb-1" />
+                  <p className="text-xs text-muted-foreground">{pkg.support}</p>
+                </div>
               </div>
 
               <ul className="space-y-3 mb-8">
@@ -147,6 +185,72 @@ const PackagesSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Comparison Table */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="overflow-x-auto"
+        >
+          <h3 className="text-xl md:text-2xl font-bold font-display text-center mb-8">
+            Comparação de Pacotes
+          </h3>
+          <table className="w-full min-w-[600px] border-collapse">
+            <thead>
+              <tr className="border-b border-border">
+                <th className="text-left py-4 px-4 text-muted-foreground font-medium">Funcionalidade</th>
+                <th className="text-center py-4 px-4 text-foreground font-semibold">Site Essencial</th>
+                <th className="text-center py-4 px-4 text-primary font-semibold bg-primary/5 rounded-t-lg">Site Profissional</th>
+                <th className="text-center py-4 px-4 text-foreground font-semibold">Página de Vendas</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonFeatures.map((row, index) => (
+                <tr key={index} className="border-b border-border/50 hover:bg-muted/20 transition-colors">
+                  <td className="py-3 px-4 text-sm text-muted-foreground">{row.feature}</td>
+                  <td className="py-3 px-4 text-center">
+                    {row.starter ? (
+                      <Check size={18} className="text-primary mx-auto" />
+                    ) : (
+                      <X size={18} className="text-muted-foreground/40 mx-auto" />
+                    )}
+                  </td>
+                  <td className="py-3 px-4 text-center bg-primary/5">
+                    {row.growth ? (
+                      <Check size={18} className="text-primary mx-auto" />
+                    ) : (
+                      <X size={18} className="text-muted-foreground/40 mx-auto" />
+                    )}
+                  </td>
+                  <td className="py-3 px-4 text-center">
+                    {row.premium ? (
+                      <Check size={18} className="text-primary mx-auto" />
+                    ) : (
+                      <X size={18} className="text-muted-foreground/40 mx-auto" />
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </motion.div>
+
+        {/* Guarantee Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 text-center"
+        >
+          <h4 className="text-lg font-bold font-display text-foreground mb-2">
+            Garantia de Satisfação
+          </h4>
+          <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+            Você é dono do seu site. Sem fidelização, sem contratos longos. Se não ficar satisfeito, devolvemos o sinal. 
+            Suporte incluído em todos os pacotes.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

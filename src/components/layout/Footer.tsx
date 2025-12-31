@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Mail, Phone } from "lucide-react";
+import { MapPin, Mail, Phone, Globe } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import logoCrown from "@/assets/logo-crown.png";
 
@@ -21,6 +21,13 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm leading-relaxed">
               {t("footer.description")}
             </p>
+            {/* NAP - Name, Address, Phone */}
+            <address className="not-italic text-xs text-muted-foreground space-y-1">
+              <p className="font-medium text-foreground">Império Web</p>
+              <p>Costa da Caparica, Portugal</p>
+              <p>Email: info@imperioweb.eu</p>
+              <p>Tel: +351 910 000 000</p>
+            </address>
           </div>
 
           {/* Links */}
@@ -33,11 +40,14 @@ const Footer = () => {
               <Link to="/servicos" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 {t("footer.link2")}
               </Link>
+              <Link to="/portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                {t("footer.link3")}
+              </Link>
+              <Link to="/sobre" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                {t("common.about")}
+              </Link>
               <Link to="/contacto" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 {t("footer.link4")}
-              </Link>
-              <Link to="/privacidade" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                {t("footer.link5")}
               </Link>
             </nav>
           </div>
@@ -61,7 +71,7 @@ const Footer = () => {
             </nav>
           </div>
 
-          {/* Contacto */}
+          {/* Contacto + Áreas Atendidas */}
           <div className="space-y-4">
             <h4 className="font-display font-semibold text-foreground">{t("footer.contactTitle")}</h4>
             <div className="flex flex-col gap-3">
@@ -73,11 +83,11 @@ const Footer = () => {
                 </div>
               </div>
               <a 
-                href="mailto:info@imperioweb.pt" 
+                href="mailto:info@imperioweb.eu" 
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail size={16} className="text-primary flex-shrink-0" />
-                <span>info@imperioweb.pt</span>
+                <span>info@imperioweb.eu</span>
               </a>
               <a 
                 href="https://wa.me/351910000000" 
@@ -88,6 +98,17 @@ const Footer = () => {
                 <Phone size={16} className="text-primary flex-shrink-0" />
                 <span>+351 910 000 000</span>
               </a>
+            </div>
+            
+            {/* Áreas Atendidas - SEO Local */}
+            <div className="pt-2 border-t border-border/50">
+              <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
+                <Globe size={12} className="text-primary" />
+                <span className="font-medium">Áreas Atendidas:</span>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Lisboa, Almada, Costa da Caparica, Margem Sul, Setúbal, Cascais, Sintra, Porto, Braga, Coimbra e todo Portugal. Serviço remoto para Europa.
+              </p>
             </div>
           </div>
         </div>
@@ -101,6 +122,9 @@ const Footer = () => {
             <span className="text-sm text-muted-foreground">
               {t("common.creationInPortugal")}
             </span>
+            <Link to="/privacidade" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              {t("common.privacy")}
+            </Link>
           </div>
         </div>
       </div>
