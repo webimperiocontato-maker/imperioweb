@@ -42,7 +42,17 @@ const Contacto = () => {
         <link rel="canonical" href="https://imperioweb.eu/contacto" />
         <link rel="alternate" hrefLang="pt-PT" href="https://imperioweb.eu/contacto" />
         <link rel="alternate" hrefLang="en" href="https://imperioweb.eu/contacto" />
+        <link rel="alternate" hrefLang="x-default" href="https://imperioweb.eu/contacto" />
+        <meta property="og:title" content={t("contactPage.metaTitle")} />
+        <meta property="og:description" content={t("contactPage.metaDescription")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://imperioweb.eu/contacto" />
+        <meta property="og:image" content="https://imperioweb.eu/og-image.jpg" />
         <meta property="og:locale" content={language === "pt" ? "pt_PT" : "en_US"} />
+        <meta property="og:site_name" content="Império Web" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t("contactPage.metaTitle")} />
+        <meta name="twitter:description" content={t("contactPage.metaDescription")} />
       </Helmet>
       <Layout>
         {/* Hero */}
@@ -121,10 +131,10 @@ const Contacto = () => {
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">{t("contactPage.emailTitle")}</h3>
                       <a 
-                        href="mailto:info@imperioweb.pt" 
+                        href="mailto:info@imperioweb.eu" 
                         className="text-muted-foreground text-sm hover:text-primary transition-colors"
                       >
-                        info@imperioweb.pt
+                        info@imperioweb.eu
                       </a>
                     </div>
                   </div>

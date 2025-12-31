@@ -11,6 +11,7 @@ import LeadMagnetSection from "@/components/home/LeadMagnetSection";
 import PackagesSection from "@/components/home/PackagesSection";
 import FAQSection from "@/components/home/FAQSection";
 import CTASection from "@/components/home/CTASection";
+import AreasServedSection from "@/components/home/AreasServedSection";
 import SchemaMarkup from "@/components/seo/SchemaMarkup";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -34,7 +35,7 @@ const Index = () => {
         <meta property="og:description" content={t("seo.homeDescription")} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://imperioweb.eu/" />
-        <meta property="og:image" content="https://imperioweb.pt/og-image.jpg" />
+        <meta property="og:image" content="https://imperioweb.eu/og-image.jpg" />
         <meta property="og:locale" content={language === "pt" ? "pt_PT" : "en_US"} />
         <meta property="og:site_name" content="Império Web" />
         
@@ -42,7 +43,7 @@ const Index = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t("seo.homeTitle")} />
         <meta name="twitter:description" content={t("seo.homeDescription")} />
-        <meta name="twitter:image" content="https://imperioweb.pt/og-image.jpg" />
+        <meta name="twitter:image" content="https://imperioweb.eu/og-image.jpg" />
         
         {/* Additional SEO */}
         <meta name="robots" content="index, follow" />
@@ -63,6 +64,7 @@ const Index = () => {
         <ComparisonSection />
         <LeadMagnetSection />
         <PackagesSection />
+        <AreasServedSection />
         <FAQSection />
         <CTASection />
       </Layout>
