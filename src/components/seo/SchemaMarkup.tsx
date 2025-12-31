@@ -23,16 +23,9 @@ const SchemaMarkup = ({ includeFAQ = false }: SchemaMarkupProps) => {
     email: "info@imperioweb.eu",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Costa da Caparica",
-      addressLocality: "Almada",
+      addressLocality: "Lisboa",
       addressRegion: "Lisboa",
-      postalCode: "2825",
       addressCountry: "PT",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "38.6453",
-      longitude: "-9.2354",
     },
     areaServed: [
       {
@@ -58,7 +51,7 @@ const SchemaMarkup = ({ includeFAQ = false }: SchemaMarkupProps) => {
       },
       {
         "@type": "City",
-        name: "Almada",
+        name: "Braga",
       },
       {
         "@type": "City",
