@@ -8,7 +8,6 @@ import DifferentialsSection from "@/components/home/DifferentialsSection";
 import MiniCasesSection from "@/components/home/MiniCasesSection";
 import FAQSection from "@/components/home/FAQSection";
 import CTASection from "@/components/home/CTASection";
-import AreasServedSection from "@/components/home/AreasServedSection";
 import SchemaMarkup from "@/components/seo/SchemaMarkup";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -56,9 +55,7 @@ const Index = () => {
         <PackagesSection />
         <ProblemSection />
         <HowItWorksSection />
-        <DifferentialsSection />
         <MiniCasesSection />
-        <AreasServedSection />
         <FAQSection />
         <CTASection />
       </Layout>
