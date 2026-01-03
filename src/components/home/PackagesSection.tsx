@@ -23,7 +23,7 @@ const PackagesSection = () => {
         t("packages.starterF4"),
         t("packages.starterF5"),
       ],
-      highlighted: false,
+      highlighted: true,
     },
     {
       name: t("packages.growthName"),
@@ -41,7 +41,7 @@ const PackagesSection = () => {
         t("packages.growthF5"),
         t("packages.growthF6"),
       ],
-      highlighted: true,
+      highlighted: false,
     },
     {
       name: t("packages.premiumName"),
