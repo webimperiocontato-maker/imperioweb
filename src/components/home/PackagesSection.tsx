@@ -16,6 +16,8 @@ const PackagesSection = () => {
       delivery: "5-7 dias",
       revisions: "2 revisões",
       support: "30 dias",
+      idealFor: t("packages.starterIdeal"),
+      notIncluded: t("packages.starterNotIncluded"),
       features: [
         t("packages.starterF1"),
         t("packages.starterF2"),
@@ -33,6 +35,8 @@ const PackagesSection = () => {
       delivery: "10-15 dias",
       revisions: "3 revisões",
       support: "60 dias",
+      idealFor: t("packages.growthIdeal"),
+      notIncluded: t("packages.growthNotIncluded"),
       features: [
         t("packages.growthF1"),
         t("packages.growthF2"),
@@ -51,6 +55,8 @@ const PackagesSection = () => {
       delivery: "7-14 dias",
       revisions: "Ilimitadas",
       support: "90 dias",
+      idealFor: t("packages.premiumIdeal"),
+      notIncluded: t("packages.premiumNotIncluded"),
       features: [
         t("packages.premiumF1"),
         t("packages.premiumF2"),
@@ -64,16 +70,19 @@ const PackagesSection = () => {
   ];
 
   const comparisonFeatures = [
-    { feature: "Design personalizado", starter: true, growth: true, premium: true },
-    { feature: "Funciona no telemóvel", starter: true, growth: true, premium: true },
-    { feature: "Botão WhatsApp", starter: true, growth: true, premium: true },
-    { feature: "Formulário de contacto", starter: true, growth: true, premium: true },
-    { feature: "SEO básico", starter: true, growth: true, premium: true },
-    { feature: "Ficha Google configurada", starter: false, growth: true, premium: true },
-    { feature: "SEO avançado", starter: false, growth: true, premium: true },
-    { feature: "Textos profissionais", starter: false, growth: false, premium: true },
-    { feature: "Otimizado para anúncios", starter: false, growth: false, premium: true },
-    { feature: "Analytics configurado", starter: false, growth: true, premium: true },
+    { feature: t("packages.compFeature1"), starter: true, growth: true, premium: true },
+    { feature: t("packages.compFeature2"), starter: true, growth: true, premium: true },
+    { feature: t("packages.compFeature3"), starter: true, growth: true, premium: true },
+    { feature: t("packages.compFeature4"), starter: true, growth: true, premium: true },
+    { feature: t("packages.compFeature5"), starter: true, growth: true, premium: true },
+    { feature: t("packages.compFeature6"), starter: true, growth: true, premium: true },
+    { feature: t("packages.compFeature7"), starter: false, growth: true, premium: true },
+    { feature: t("packages.compFeature8"), starter: false, growth: true, premium: true },
+    { feature: t("packages.compFeature9"), starter: false, growth: false, premium: true },
+    { feature: t("packages.compFeature10"), starter: false, growth: false, premium: true },
+    { feature: t("packages.compFeature11"), starter: false, growth: false, premium: true },
+    { feature: t("packages.compFeature12"), starter: false, growth: false, premium: true },
+    { feature: t("packages.compFeature13"), starter: false, growth: false, premium: true },
   ];
 
   return (
@@ -132,23 +141,32 @@ const PackagesSection = () => {
                 <span className="text-sm text-muted-foreground ml-2">{pkg.priceNote}</span>
               </div>
 
-              {/* Delivery, Revisions, Support */}
+              {/* Delivery, Revisions, Support with Labels */}
               <div className="grid grid-cols-3 gap-2 mb-6 p-3 rounded-lg bg-background/50 border border-border/50">
                 <div className="text-center">
                   <Clock size={14} className="text-primary mx-auto mb-1" />
-                  <p className="text-xs text-muted-foreground">{pkg.delivery}</p>
+                  <p className="text-[10px] text-muted-foreground/70 uppercase tracking-wide">{t("packages.deliveryLabel")}</p>
+                  <p className="text-xs text-muted-foreground font-medium">{pkg.delivery}</p>
                 </div>
                 <div className="text-center border-x border-border/50">
                   <RefreshCw size={14} className="text-primary mx-auto mb-1" />
-                  <p className="text-xs text-muted-foreground">{pkg.revisions}</p>
+                  <p className="text-[10px] text-muted-foreground/70 uppercase tracking-wide">{t("packages.revisionsLabel")}</p>
+                  <p className="text-xs text-muted-foreground font-medium">{pkg.revisions}</p>
                 </div>
                 <div className="text-center">
                   <Headphones size={14} className="text-primary mx-auto mb-1" />
-                  <p className="text-xs text-muted-foreground">{pkg.support}</p>
+                  <p className="text-[10px] text-muted-foreground/70 uppercase tracking-wide">{t("packages.supportLabel")}</p>
+                  <p className="text-xs text-muted-foreground font-medium">{pkg.support}</p>
                 </div>
               </div>
 
-              <ul className="space-y-3 mb-8">
+              {/* Ideal For */}
+              <div className="mb-4 p-3 rounded-lg bg-primary/5 border border-primary/10">
+                <p className="text-xs font-medium text-primary mb-1">{t("packages.idealFor")}</p>
+                <p className="text-xs text-muted-foreground">{pkg.idealFor}</p>
+              </div>
+
+              <ul className="space-y-3 mb-4">
                 {pkg.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -158,6 +176,12 @@ const PackagesSection = () => {
                   </li>
                 ))}
               </ul>
+
+              {/* Not Included */}
+              <div className="mb-6 p-3 rounded-lg bg-muted/30 border border-border/30">
+                <p className="text-xs font-medium text-muted-foreground mb-1">{t("packages.notIncluded")}</p>
+                <p className="text-xs text-muted-foreground/80">{pkg.notIncluded}</p>
+              </div>
 
               <div className="space-y-3">
                 <Button 
@@ -194,15 +218,15 @@ const PackagesSection = () => {
           className="overflow-x-auto"
         >
           <h3 className="text-xl md:text-2xl font-bold font-display text-center mb-8">
-            Comparação de Pacotes
+            {t("packages.comparisonTitle")}
           </h3>
           <table className="w-full min-w-[600px] border-collapse">
             <thead>
               <tr className="border-b border-border">
-                <th className="text-left py-4 px-4 text-muted-foreground font-medium">Funcionalidade</th>
-                <th className="text-center py-4 px-4 text-foreground font-semibold">Site Essencial</th>
-                <th className="text-center py-4 px-4 text-primary font-semibold bg-primary/5 rounded-t-lg">Site Profissional</th>
-                <th className="text-center py-4 px-4 text-foreground font-semibold">Página de Vendas</th>
+                <th className="text-left py-4 px-4 text-muted-foreground font-medium">{t("packages.comparisonFeature")}</th>
+                <th className="text-center py-4 px-4 text-foreground font-semibold">{t("packages.starterName")}</th>
+                <th className="text-center py-4 px-4 text-primary font-semibold bg-primary/5 rounded-t-lg">{t("packages.growthName")}</th>
+                <th className="text-center py-4 px-4 text-foreground font-semibold">{t("packages.premiumName")}</th>
               </tr>
             </thead>
             <tbody>
@@ -244,11 +268,10 @@ const PackagesSection = () => {
           className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 text-center"
         >
           <h4 className="text-lg font-bold font-display text-foreground mb-2">
-            Garantia de Satisfação
+            {t("packages.guaranteeTitle")}
           </h4>
           <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-            Você é dono do seu site. Sem fidelização, sem contratos longos. Se não ficar satisfeito, devolvemos o sinal. 
-            Suporte incluído em todos os pacotes.
+            {t("packages.guaranteeText")}
           </p>
         </motion.div>
       </div>
