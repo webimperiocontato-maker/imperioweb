@@ -3,11 +3,9 @@ import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/home/HeroSection";
 import PackagesSection from "@/components/home/PackagesSection";
 import ProblemSection from "@/components/home/ProblemSection";
-import ServicesSection from "@/components/home/ServicesSection";
 import HowItWorksSection from "@/components/home/HowItWorksSection";
 import DifferentialsSection from "@/components/home/DifferentialsSection";
 import MiniCasesSection from "@/components/home/MiniCasesSection";
-import ComparisonSection from "@/components/home/ComparisonSection";
 import FAQSection from "@/components/home/FAQSection";
 import CTASection from "@/components/home/CTASection";
 import AreasServedSection from "@/components/home/AreasServedSection";
@@ -57,11 +55,9 @@ const Index = () => {
         <HeroSection />
         <PackagesSection />
         <ProblemSection />
-        <ServicesSection />
         <HowItWorksSection />
         <DifferentialsSection />
         <MiniCasesSection />
-        <ComparisonSection />
         <AreasServedSection />
         <FAQSection />
         <CTASection />
