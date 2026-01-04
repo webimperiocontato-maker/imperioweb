@@ -130,7 +130,7 @@ const Portfolio = () => {
     const message = encodeURIComponent(
       `Olá! Vi o portfólio e quero o diagnóstico gratuito.\n\nNome: ${formData.name}\nContacto: ${formData.contact}\nNegócio: ${formData.business}`
     );
-    window.open(`https://wa.me/351910000000?text=${message}`, "_blank");
+    window.open(`https://wa.me/351920804088?text=${message}`, "_blank");
     toast({
       title: t("leadForm.toastTitle"),
       description: t("leadForm.toastDescription"),
@@ -177,7 +177,7 @@ const Portfolio = () => {
                 </Button>
                 <Button variant="whatsapp" size="lg" asChild>
                   <a
-                    href={`https://wa.me/351910000000?text=${whatsappMessage}`}
+                    href={`https://wa.me/351920804088?text=${whatsappMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

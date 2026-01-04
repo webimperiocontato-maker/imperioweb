@@ -116,7 +116,7 @@ const ServicesSection = () => {
 
               {/* CTA */}
               <Button variant="outline" className="w-full group-hover:border-primary group-hover:text-primary" asChild>
-                <a href={`https://wa.me/351910000000?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer">
+                <a href={`https://wa.me/351920804088?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer">
                   {t("services.cta")}
                   <ArrowRight size={16} />
                 </a>

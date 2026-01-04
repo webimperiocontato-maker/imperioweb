@@ -27,7 +27,7 @@ const MobileStickyBar = () => {
           asChild
         >
           <a 
-            href={`https://wa.me/351910000000?text=${whatsappMessage}`}
+            href={`https://wa.me/351920804088?text=${whatsappMessage}`}
             target="_blank"
             rel="noopener noreferrer"
           >

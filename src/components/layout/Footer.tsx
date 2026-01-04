@@ -25,8 +25,8 @@ const Footer = () => {
             <address className="not-italic text-xs text-muted-foreground space-y-1">
               <p className="font-medium text-foreground">Império Web</p>
               <p>Costa da Caparica, Portugal</p>
-              <p>Email: info@imperioweb.eu</p>
-              <p>Tel: +351 910 000 000</p>
+              <p>Email: webimperiocontato@gmail.com</p>
+              <p>Tel: +351 920 804 088</p>
             </address>
           </div>
 
@@ -83,20 +83,20 @@ const Footer = () => {
                 </div>
               </div>
               <a 
-                href="mailto:info@imperioweb.eu" 
+                href="mailto:webimperiocontato@gmail.com" 
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail size={16} className="text-primary flex-shrink-0" />
-                <span>info@imperioweb.eu</span>
+                <span>webimperiocontato@gmail.com</span>
               </a>
               <a 
-                href="https://wa.me/351910000000" 
+                href="https://wa.me/351920804088" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <Phone size={16} className="text-primary flex-shrink-0" />
-                <span>+351 910 000 000</span>
+                <span>+351 920 804 088</span>
               </a>
             </div>
             

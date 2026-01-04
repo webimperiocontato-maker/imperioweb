@@ -4,7 +4,6 @@ import HeroSection from "@/components/home/HeroSection";
 import PackagesSection from "@/components/home/PackagesSection";
 import ProblemSection from "@/components/home/ProblemSection";
 import HowItWorksSection from "@/components/home/HowItWorksSection";
-import DifferentialsSection from "@/components/home/DifferentialsSection";
 import MiniCasesSection from "@/components/home/MiniCasesSection";
 import FAQSection from "@/components/home/FAQSection";
 import CTASection from "@/components/home/CTASection";
@@ -27,25 +26,25 @@ const Index = () => {
         <link rel="alternate" hrefLang="x-default" href="https://imperioweb.eu/" />
         
         {/* Open Graph */}
+        <meta property="og:site_name" content="Império Web" />
         <meta property="og:title" content={t("seo.homeTitle")} />
         <meta property="og:description" content={t("seo.homeDescription")} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://imperioweb.eu/" />
-        <meta property="og:image" content="https://imperioweb.eu/og-image.jpg" />
+        <meta property="og:image" content="https://imperioweb.eu/og-image.png" />
         <meta property="og:locale" content={language === "pt" ? "pt_PT" : "en_US"} />
-        <meta property="og:site_name" content="Império Web" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t("seo.homeTitle")} />
         <meta name="twitter:description" content={t("seo.homeDescription")} />
-        <meta name="twitter:image" content="https://imperioweb.eu/og-image.jpg" />
+        <meta name="twitter:image" content="https://imperioweb.eu/og-image.png" />
         
         {/* Additional SEO */}
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Império Web" />
         <meta name="geo.region" content="PT" />
-        <meta name="geo.placename" content="Lisboa, Portugal" />
+        <meta name="geo.placename" content="Portugal" />
       </Helmet>
       
       <SchemaMarkup includeFAQ={true} />

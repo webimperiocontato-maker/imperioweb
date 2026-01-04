@@ -37,7 +37,7 @@ const LeadMagnetSection = () => {
       `Olá! Quero pedir o diagnóstico gratuito.\n\nNome: ${formData.name}\nContacto: ${formData.contact}\nNegócio: ${formData.business}\nObjetivo: ${formData.objective}`
     );
     
-    window.open(`https://wa.me/351910000000?text=${message}`, "_blank");
+    window.open(`https://wa.me/351920804088?text=${message}`, "_blank");
     
     toast({
       title: t("leadForm.toastTitle"),

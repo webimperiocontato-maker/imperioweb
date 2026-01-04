@@ -175,7 +175,7 @@ const Sobre = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button variant="whatsapp" size="xl" asChild>
                   <a
-                    href={`https://wa.me/351910000000?text=${encodeURIComponent(t("whatsapp.aboutMessage"))}`}
+                    href={`https://wa.me/351920804088?text=${encodeURIComponent(t("whatsapp.aboutMessage"))}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

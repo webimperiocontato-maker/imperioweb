@@ -26,7 +26,7 @@ const LeadForm = ({ variant = "default", className = "" }: LeadFormProps) => {
     const objectiveText = formData.objective || (language === "pt" ? "Não especificado" : "Not specified");
     const whatsappFormMessage = `${language === "pt" ? "Olá! Quero pedir um orçamento." : "Hello! I want to request a quote."}%0A%0A${language === "pt" ? "Nome" : "Name"}: ${formData.name}%0A${language === "pt" ? "Contacto" : "Contact"}: ${formData.contact}%0A${language === "pt" ? "Tipo de negócio" : "Business type"}: ${formData.businessType}%0A${language === "pt" ? "Objetivo" : "Objective"}: ${objectiveText}`;
     
-    window.open(`https://wa.me/351910000000?text=${whatsappFormMessage}`, "_blank");
+    window.open(`https://wa.me/351920804088?text=${whatsappFormMessage}`, "_blank");
     
     toast({
       title: t("leadForm.toastTitle"),
