@@ -119,6 +119,14 @@ const Footer = () => {
             © {new Date().getFullYear()} Império Web. {t("common.rightsReserved")}
           </p>
           <div className="flex items-center gap-6">
+            <a 
+              href="https://www.instagram.com/imperioweb.ptbr?igsh=NHZ3cW5zMDd0Nmtt" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Instagram
+            </a>
             <span className="text-sm text-muted-foreground">
               {t("common.creationInPortugal")}
             </span>
