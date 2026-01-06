@@ -25,7 +25,7 @@ const Contacto = () => {
     
     const whatsappFormMessage = `${language === "pt" ? "Olá! O meu nome é" : "Hello! My name is"} ${formData.name}.%0A%0A${language === "pt" ? "Serviço de interesse" : "Service of interest"}: ${formData.service || (language === "pt" ? "Não especificado" : "Not specified")}%0A%0A${language === "pt" ? "Mensagem" : "Message"}: ${formData.message}%0A%0A${language === "pt" ? "Contacto" : "Contact"}: ${formData.email} | ${formData.phone}`;
     
-    window.open(`https://wa.me/351910000000?text=${whatsappFormMessage}`, "_blank");
+    window.open(`https://wa.me/351920804088?text=${whatsappFormMessage}`, "_blank");
     
     toast({
       title: t("contactPage.toastTitle"),
@@ -75,9 +75,9 @@ const Contacto = () => {
               <p className="text-lg text-muted-foreground mb-6">
                 {t("contactPage.description")}
               </p>
-              <Button variant="whatsapp" size="lg" asChild>
+                <Button variant="whatsapp" size="lg" asChild>
                 <a
-                  href={`https://wa.me/351910000000?text=${whatsappMessage}`}
+                  href={`https://wa.me/351920804088?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -131,10 +131,10 @@ const Contacto = () => {
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">{t("contactPage.emailTitle")}</h3>
                       <a 
-                        href="mailto:info@imperioweb.eu" 
+                        href="mailto:webimperiocontato@gmail.com" 
                         className="text-muted-foreground text-sm hover:text-primary transition-colors"
                       >
-                        info@imperioweb.eu
+                        webimperiocontato@gmail.com
                       </a>
                     </div>
                   </div>
@@ -146,12 +146,12 @@ const Contacto = () => {
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">{t("contactPage.whatsappTitle")}</h3>
                       <a 
-                        href="https://wa.me/351910000000" 
+                        href="https://wa.me/351920804088" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-muted-foreground text-sm hover:text-primary transition-colors"
                       >
-                        +351 910 000 000
+                        +351 920 804 088
                       </a>
                     </div>
                   </div>
@@ -165,7 +165,7 @@ const Contacto = () => {
                   </p>
                   <Button variant="whatsapp" className="w-full" asChild>
                     <a
-                      href={`https://wa.me/351910000000?text=${whatsappMessage}`}
+                      href={`https://wa.me/351920804088?text=${whatsappMessage}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

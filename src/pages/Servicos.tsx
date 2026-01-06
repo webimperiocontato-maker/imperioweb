@@ -123,7 +123,7 @@ const Servicos = () => {
               </p>
               <Button variant="whatsapp" size="lg" asChild>
                 <a
-                  href={`https://wa.me/351910000000?text=${whatsappMessage}`}
+                  href={`https://wa.me/351920804088?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -198,7 +198,7 @@ const Servicos = () => {
                       <div className="pt-6">
                         <Button variant="hero" size="lg" asChild>
                           <a
-                            href={`https://wa.me/351910000000?text=${encodeURIComponent(t("whatsapp.serviceMessage", { service: service.title }))}`}
+                            href={`https://wa.me/351920804088?text=${encodeURIComponent(t("whatsapp.serviceMessage", { service: service.title }))}`}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -232,7 +232,7 @@ const Servicos = () => {
               </p>
               <Button variant="whatsapp" size="xl" asChild>
                 <a
-                  href={`https://wa.me/351910000000?text=${whatsappMessage}`}
+                  href={`https://wa.me/351920804088?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
