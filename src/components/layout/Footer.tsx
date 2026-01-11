@@ -92,13 +92,13 @@ const Footer = () => {
                 <span>+351 920 804 088</span>
               </a>
               <a 
-                href="https://www.instagram.com/imperioweb.ptbr?igsh=NHZ3cW5zMDd0Nmtt" 
+                href="https://www.instagram.com/imperioweb.eu" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <Instagram size={16} className="text-primary flex-shrink-0" />
-                <span>@imperioweb.ptbr</span>
+                <span>@imperioweb.eu</span>
               </a>
             </div>
           </div>
