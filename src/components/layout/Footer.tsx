@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Mail, Phone, Globe } from "lucide-react";
+import { MapPin, Mail, Phone, Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import logoCrown from "@/assets/logo-crown.png";
 
@@ -21,13 +21,6 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm leading-relaxed">
               {t("footer.description")}
             </p>
-            {/* NAP - Name, Address, Phone */}
-            <address className="not-italic text-xs text-muted-foreground space-y-1">
-              <p className="font-medium text-foreground">Império Web</p>
-              <p>Costa da Caparica, Portugal</p>
-              <p>Email: webimperiocontato@gmail.com</p>
-              <p>Tel: +351 920 804 088</p>
-            </address>
           </div>
 
           {/* Links */}
@@ -71,7 +64,7 @@ const Footer = () => {
             </nav>
           </div>
 
-          {/* Contacto + Áreas Atendidas */}
+          {/* Contacto */}
           <div className="space-y-4">
             <h4 className="font-display font-semibold text-foreground">{t("footer.contactTitle")}</h4>
             <div className="flex flex-col gap-3">
@@ -98,17 +91,15 @@ const Footer = () => {
                 <Phone size={16} className="text-primary flex-shrink-0" />
                 <span>+351 920 804 088</span>
               </a>
-            </div>
-            
-            {/* Áreas Atendidas - SEO Local + Europa */}
-            <div className="pt-2 border-t border-border/50">
-              <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
-                <Globe size={12} className="text-primary" />
-                <span className="font-medium">Áreas Atendidas:</span>
-              </div>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Lisboa, Porto, Braga, Coimbra, Almada, Cascais, Sintra, Setúbal e todo Portugal. Serviço remoto para empresas na União Europeia.
-              </p>
+              <a 
+                href="https://www.instagram.com/imperioweb.ptbr?igsh=NHZ3cW5zMDd0Nmtt" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Instagram size={16} className="text-primary flex-shrink-0" />
+                <span>@imperioweb.ptbr</span>
+              </a>
             </div>
           </div>
         </div>
@@ -119,14 +110,6 @@ const Footer = () => {
             © {new Date().getFullYear()} Império Web. {t("common.rightsReserved")}
           </p>
           <div className="flex items-center gap-6">
-            <a 
-              href="https://www.instagram.com/imperioweb.ptbr?igsh=NHZ3cW5zMDd0Nmtt" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              Instagram
-            </a>
             <span className="text-sm text-muted-foreground">
               {t("common.creationInPortugal")}
             </span>
