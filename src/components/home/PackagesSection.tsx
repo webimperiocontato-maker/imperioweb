@@ -42,8 +42,6 @@ const PackagesSection = () => {
         t("packages.growthF2"),
         t("packages.growthF3"),
         t("packages.growthF4"),
-        t("packages.growthF5"),
-        t("packages.growthF6"),
       ],
       highlighted: false,
     },
