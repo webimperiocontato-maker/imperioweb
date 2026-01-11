@@ -16,7 +16,7 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-function App() {
+const App = () => {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
@@ -37,6 +37,6 @@ function App() {
       </QueryClientProvider>
     </HelmetProvider>
   );
-}
+};
 
 export default App;
