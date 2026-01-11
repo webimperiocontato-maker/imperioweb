@@ -12,6 +12,7 @@ import Servicos from "./pages/Servicos";
 import Portfolio from "./pages/Portfolio";
 import Sobre from "./pages/Sobre";
 import Contacto from "./pages/Contacto";
+import Privacidade from "./pages/Privacidade";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => {
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/contacto" element={<Contacto />} />
+              <Route path="/privacidade" element={<Privacidade />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </TooltipProvider>
