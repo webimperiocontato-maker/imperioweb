@@ -88,16 +88,6 @@ const HeroSection = () => {
                   <ArrowRight size={20} />
                 </a>
               </Button>
-              <Button variant="outline" size="xl" className="border-border hover:bg-card" asChild>
-                <a
-                  href={`https://wa.me/351910000000?text=${whatsappMessage}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle size={20} />
-                  {t("heroNew.ctaSecondary")}
-                </a>
-              </Button>
             </motion.div>
 
             {/* Guarantee */}
