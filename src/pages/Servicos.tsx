@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/layout/Layout";
+import MiniCasesSection from "@/components/home/MiniCasesSection";
 import { Check, ArrowRight, Sparkles, Clock, RefreshCw, Headphones, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -158,7 +159,7 @@ const Servicos = memo(() => {
                     <span className="text-sm text-muted-foreground ml-2">{pkg.priceNote}</span>
                   </div>
 
-                  {/* Delivery, Revisions, Support with Labels */}}
+                  {/* Delivery, Revisions, Support with Labels */}
                   <div className="grid grid-cols-3 gap-2 mb-6 p-3 rounded-lg bg-background/50 border border-border/50">
                     <div className="text-center">
                       <Clock size={14} className="text-primary mx-auto mb-1" />
@@ -283,6 +284,9 @@ const Servicos = memo(() => {
             </motion.div>
           </div>
         </section>
+
+        {/* Mini Cases Section */}
+        <MiniCasesSection />
       </Layout>
     </>
   );

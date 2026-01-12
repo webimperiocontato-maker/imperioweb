@@ -3,7 +3,6 @@ import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/home/HeroSection";
 import PackagesSection from "@/components/home/PackagesSection";
 import HowItWorksSection from "@/components/home/HowItWorksSection";
-import MiniCasesSection from "@/components/home/MiniCasesSection";
 import FAQSection from "@/components/home/FAQSection";
 import CTASection from "@/components/home/CTASection";
 import SchemaMarkup from "@/components/seo/SchemaMarkup";
@@ -52,7 +51,6 @@ const Index = () => {
         <HeroSection />
         <PackagesSection />
         <HowItWorksSection />
-        <MiniCasesSection />
         <FAQSection />
         <CTASection />
       </Layout>
