@@ -165,27 +165,9 @@ const Portfolio = () => {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-display mb-4">
                 {t("portfolioPage.heroTitle")}
               </h1>
-              <p className="text-lg text-muted-foreground mb-8">
+              <p className="text-lg text-muted-foreground">
                 {t("portfolioPage.heroSubtitle")}
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button variant="hero" size="lg" asChild>
-                  <a href="#orcamento-portfolio">
-                    {t("heroNew.ctaPrimary")}
-                    <ArrowRight size={18} />
-                  </a>
-                </Button>
-                <Button variant="whatsapp" size="lg" asChild>
-                  <a
-                    href={`https://wa.me/351920804088?text=${whatsappMessage}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle size={18} />
-                    {t("ctaFinal.whatsappButton")}
-                  </a>
-                </Button>
-              </div>
             </motion.div>
           </div>
         </section>

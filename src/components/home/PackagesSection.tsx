@@ -198,56 +198,6 @@ const PackagesSection = memo(() => {
           ))}
         </div>
 
-        {/* Comparison Table */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="overflow-x-auto"
-        >
-          <h3 className="text-xl md:text-2xl font-bold font-display text-center mb-8">
-            {t("packages.comparisonTitle")}
-          </h3>
-          <table className="w-full min-w-[600px] border-collapse">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="text-left py-4 px-4 text-muted-foreground font-medium">{t("packages.comparisonFeature")}</th>
-                <th className="text-center py-4 px-4 text-foreground font-semibold">{t("packages.starterName")}</th>
-                <th className="text-center py-4 px-4 text-primary font-semibold bg-primary/5 rounded-t-lg">{t("packages.growthName")}</th>
-                <th className="text-center py-4 px-4 text-foreground font-semibold">{t("packages.premiumName")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {comparisonFeatures.map((row, index) => (
-                <tr key={index} className="border-b border-border/50 hover:bg-muted/20 transition-colors">
-                  <td className="py-3 px-4 text-sm text-muted-foreground">{row.feature}</td>
-                  <td className="py-3 px-4 text-center">
-                    {row.starter ? (
-                      <Check size={18} className="text-primary mx-auto" />
-                    ) : (
-                      <X size={18} className="text-muted-foreground/40 mx-auto" />
-                    )}
-                  </td>
-                  <td className="py-3 px-4 text-center bg-primary/5">
-                    {row.growth ? (
-                      <Check size={18} className="text-primary mx-auto" />
-                    ) : (
-                      <X size={18} className="text-muted-foreground/40 mx-auto" />
-                    )}
-                  </td>
-                  <td className="py-3 px-4 text-center">
-                    {row.premium ? (
-                      <Check size={18} className="text-primary mx-auto" />
-                    ) : (
-                      <X size={18} className="text-muted-foreground/40 mx-auto" />
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </motion.div>
-
         {/* Guarantee Banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
