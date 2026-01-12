@@ -592,6 +592,7 @@
     "optionMaintenance": "Manutenção",
     "optionOther": "Outro",
     "submitButton": "Enviar e Receber Proposta",
+    "submitNote": "Ao enviar, será redirecionado para o WhatsApp para finalizar o contacto.",
     "formSuccess": "Mensagem enviada com sucesso!",
     "formSuccessDesc": "Entramos em contacto em menos de 24 horas."
   },

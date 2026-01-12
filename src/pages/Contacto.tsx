@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/layout/Layout";
-import { MapPin, Mail, Phone, Send, ArrowRight, MessageCircle } from "lucide-react";
+import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -10,7 +10,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const Contacto = () => {
   const { toast } = useToast();
   const { t, language } = useLanguage();
-  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
   
   const [formData, setFormData] = useState({
     name: "",
@@ -72,19 +71,9 @@ const Contacto = () => {
                 {t("contactPage.headline")}{" "}
                 <span className="text-gradient">{t("contactPage.headlineHighlight")}</span>
               </h1>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-muted-foreground">
                 {t("contactPage.description")}
               </p>
-                <Button variant="whatsapp" size="lg" asChild>
-                <a
-                  href={`https://wa.me/351920804088?text=${whatsappMessage}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle size={20} />
-                  {t("contactPage.ctaButton")}
-                </a>
-              </Button>
             </motion.div>
           </div>
         </section>
@@ -92,97 +81,13 @@ const Contacto = () => {
         {/* Contact Section */}
         <section className="section-padding">
           <div className="container-custom">
-            <div className="grid lg:grid-cols-5 gap-12">
-              {/* Contact Info */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="lg:col-span-2 space-y-8"
-              >
-                <div>
-                  <h2 className="text-2xl font-bold font-display mb-4">
-                    {t("contactPage.talkTitle")}
-                  </h2>
-                  <p className="text-muted-foreground">
-                    {t("contactPage.talkDescription")}
-                  </p>
-                </div>
-
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <MapPin size={24} className="text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">{t("contactPage.locationTitle")}</h3>
-                      <p className="text-muted-foreground text-sm">
-                        {t("contactPage.locationText")}<br />
-                        {t("contactPage.locationSubText")}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Mail size={24} className="text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">{t("contactPage.emailTitle")}</h3>
-                      <a 
-                        href="mailto:webimperiocontato@gmail.com" 
-                        className="text-muted-foreground text-sm hover:text-primary transition-colors"
-                      >
-                        webimperiocontato@gmail.com
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Phone size={24} className="text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">{t("contactPage.whatsappTitle")}</h3>
-                      <a 
-                        href="https://wa.me/351920804088" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground text-sm hover:text-primary transition-colors"
-                      >
-                        +351 920 804 088
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Quick WhatsApp CTA */}
-                <div className="p-6 rounded-2xl bg-gradient-card border border-primary/30 shadow-glow">
-                  <h3 className="font-semibold font-display mb-2">{t("contactPage.quickResponseTitle")}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    {t("contactPage.quickResponseDescription")}
-                  </p>
-                  <Button variant="whatsapp" className="w-full" asChild>
-                    <a
-                      href={`https://wa.me/351920804088?text=${whatsappMessage}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {t("contactPage.quickResponseCta")}
-                      <ArrowRight size={18} />
-                    </a>
-                  </Button>
-                </div>
-              </motion.div>
-
+            <div className="max-w-3xl mx-auto">
               {/* Contact Form */}
               <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="lg:col-span-3"
               >
                 <form 
                   onSubmit={handleSubmit}

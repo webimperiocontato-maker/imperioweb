@@ -591,6 +591,7 @@
     "optionMaintenance": "Maintenance",
     "optionOther": "Other",
     "submitButton": "Send and Get Proposal",
+    "submitNote": "By submitting, you will be redirected to WhatsApp to complete the contact.",
     "formSuccess": "Message sent successfully!",
     "formSuccessDesc": "We'll get in touch within 24 hours."
   },
