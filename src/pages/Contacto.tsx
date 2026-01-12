@@ -3,13 +3,28 @@ import Layout from "@/components/layout/Layout";
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
+
+// Sanitiza input para prevenir XSS
+const sanitizeInput = (input: string): string => {
+  return input
+    .trim()
+    .replace(/[<>]/g, '')
+    .replace(/javascript:/gi, '')
+    .slice(0, 500);
+};
+
+const encodeWhatsAppText = (text: string): string => {
+  return encodeURIComponent(text).replace(/%20/g, '+');
+};
 
 const Contacto = () => {
   const { toast } = useToast();
   const { t, language } = useLanguage();
+  const lastSubmitRef = useRef<number>(0);
+  const COOLDOWN_MS = 3000;
   
   const [formData, setFormData] = useState({
     name: "",
@@ -18,19 +33,45 @@ const Contacto = () => {
     service: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     
-    const whatsappFormMessage = `${language === "pt" ? "Olá! O meu nome é" : "Hello! My name is"} ${formData.name}.%0A%0A${language === "pt" ? "Serviço de interesse" : "Service of interest"}: ${formData.service || (language === "pt" ? "Não especificado" : "Not specified")}%0A%0A${language === "pt" ? "Mensagem" : "Message"}: ${formData.message}%0A%0A${language === "pt" ? "Contacto" : "Contact"}: ${formData.email} | ${formData.phone}`;
+    // Rate limiting
+    const now = Date.now();
+    if (now - lastSubmitRef.current < COOLDOWN_MS) {
+      return;
+    }
+    lastSubmitRef.current = now;
+    setIsSubmitting(true);
     
-    window.open(`https://wa.me/351920804088?text=${whatsappFormMessage}`, "_blank");
+    // Sanitizar inputs
+    const safeName = sanitizeInput(formData.name);
+    const safeEmail = sanitizeInput(formData.email);
+    const safePhone = sanitizeInput(formData.phone);
+    const safeService = formData.service || (language === "pt" ? "Não especificado" : "Not specified");
+    const safeMessage = sanitizeInput(formData.message);
+    
+    const messageLines = [
+      `${language === "pt" ? "Olá! O meu nome é" : "Hello! My name is"} ${safeName}.`,
+      "",
+      `${language === "pt" ? "Serviço de interesse" : "Service of interest"}: ${safeService}`,
+      "",
+      `${language === "pt" ? "Mensagem" : "Message"}: ${safeMessage}`,
+      "",
+      `${language === "pt" ? "Contacto" : "Contact"}: ${safeEmail} | ${safePhone}`,
+    ].join("\n");
+    
+    window.open(`https://wa.me/351920804088?text=${encodeWhatsAppText(messageLines)}`, "_blank", "noopener,noreferrer");
     
     toast({
       title: t("contactPage.toastTitle"),
       description: t("contactPage.toastDescription"),
     });
-  };
+    
+    setTimeout(() => setIsSubmitting(false), COOLDOWN_MS);
+  }, [formData, language, t, toast]);
 
   return (
     <>

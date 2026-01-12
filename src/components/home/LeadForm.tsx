@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -9,9 +9,25 @@ interface LeadFormProps {
   className?: string;
 }
 
+// Sanitiza input para prevenir XSS e caracteres problemáticos em URLs
+const sanitizeInput = (input: string): string => {
+  return input
+    .trim()
+    .replace(/[<>]/g, '') // Remove < > para prevenir HTML injection
+    .replace(/javascript:/gi, '') // Remove javascript: protocol
+    .slice(0, 500); // Limita tamanho para prevenir DoS
+};
+
+// Encode seguro para URL do WhatsApp
+const encodeWhatsAppText = (text: string): string => {
+  return encodeURIComponent(text).replace(/%20/g, '+');
+};
+
 const LeadForm = ({ variant = "default", className = "" }: LeadFormProps) => {
   const { toast } = useToast();
   const { t, language } = useLanguage();
+  const lastSubmitRef = useRef<number>(0);
+  const COOLDOWN_MS = 3000; // 3 segundos entre submits
   
   const [formData, setFormData] = useState({
     name: "",
@@ -20,16 +36,41 @@ const LeadForm = ({ variant = "default", className = "" }: LeadFormProps) => {
     objective: "",
     notes: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     
-    const objectiveText = formData.objective || (language === "pt" ? "Não especificado" : "Not specified");
-    const clientMessage = language === "pt" ? "Gostava de contratar um serviço." : "I would like to hire a service.";
-    const notesText = formData.notes.trim() ? `%0A%0A${formData.notes.trim()}` : "";
-    const whatsappFormMessage = `${clientMessage}${notesText}%0A%0A${language === "pt" ? "Nome" : "Name"}: ${formData.name}%0A${language === "pt" ? "Contacto" : "Contact"}: ${formData.contact}%0A${language === "pt" ? "Tipo de negócio" : "Business type"}: ${formData.businessType}%0A${language === "pt" ? "Plano" : "Plan"}: ${objectiveText}`;
+    // Rate limiting: previne spam de cliques
+    const now = Date.now();
+    if (now - lastSubmitRef.current < COOLDOWN_MS) {
+      return;
+    }
+    lastSubmitRef.current = now;
+    setIsSubmitting(true);
     
-    window.open(`https://wa.me/351920804088?text=${whatsappFormMessage}`, "_blank");
+    // Sanitizar todos os inputs
+    const safeName = sanitizeInput(formData.name);
+    const safeContact = sanitizeInput(formData.contact);
+    const safeBusinessType = sanitizeInput(formData.businessType);
+    const safeNotes = sanitizeInput(formData.notes);
+    const safeObjective = formData.objective || (language === "pt" ? "Não especificado" : "Not specified");
+    
+    const clientMessage = language === "pt" ? "Gostava de contratar um serviço." : "I would like to hire a service.";
+    const notesText = safeNotes ? `\n\n${safeNotes}` : "";
+    
+    const messageLines = [
+      clientMessage,
+      notesText,
+      "",
+      `${language === "pt" ? "Nome" : "Name"}: ${safeName}`,
+      `${language === "pt" ? "Contacto" : "Contact"}: ${safeContact}`,
+      `${language === "pt" ? "Tipo de negócio" : "Business type"}: ${safeBusinessType}`,
+      `${language === "pt" ? "Plano" : "Plan"}: ${safeObjective}`,
+    ].join("\n");
+    
+    const whatsappUrl = `https://wa.me/351920804088?text=${encodeWhatsAppText(messageLines)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     
     toast({
       title: t("leadForm.toastTitle"),
@@ -37,7 +78,10 @@ const LeadForm = ({ variant = "default", className = "" }: LeadFormProps) => {
     });
 
     setFormData({ name: "", contact: "", businessType: "", objective: "", notes: "" });
-  };
+    
+    // Reset submitting state após cooldown
+    setTimeout(() => setIsSubmitting(false), COOLDOWN_MS);
+  }, [formData, language, t, toast]);
 
   const isCompact = variant === "compact";
 
@@ -120,8 +164,15 @@ const LeadForm = ({ variant = "default", className = "" }: LeadFormProps) => {
         </p>
       </div>
 
-      <Button type="submit" variant="hero" size="lg" className="w-full">
-        {t("leadForm.submitButton")}
+      <Button 
+        type="submit" 
+        variant="hero" 
+        size="lg" 
+        className="w-full"
+        disabled={isSubmitting}
+        aria-busy={isSubmitting}
+      >
+        {isSubmitting ? (language === "pt" ? "A enviar..." : "Sending...") : t("leadForm.submitButton")}
         <Send size={18} />
       </Button>
 

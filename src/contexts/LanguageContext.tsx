@@ -22,13 +22,22 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguageState] = useState<Language>(() => {
-    const saved = localStorage.getItem("language");
-    return (saved === "en" ? "en" : "pt") as Language;
+    try {
+      const saved = localStorage.getItem("language");
+      return (saved === "en" ? "en" : "pt") as Language;
+    } catch {
+      // localStorage indisponível (modo privado, etc)
+      return "pt";
+    }
   });
 
   const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem("language", lang);
+    try {
+      localStorage.setItem("language", lang);
+    } catch {
+      // Falha silenciosa se localStorage não disponível
+    }
     document.documentElement.lang = lang === "pt" ? "pt-PT" : "en";
   }, []);
 
