@@ -1,12 +1,13 @@
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { memo, useMemo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LeadForm from "./LeadForm";
 
-const CTASection = () => {
+const CTASection = memo(() => {
   const { t } = useLanguage();
-  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
+  const whatsappMessage = useMemo(() => encodeURIComponent(t("whatsapp.defaultMessage")), [t]);
 
   return (
     <section className="section-padding bg-gradient-subtle relative overflow-hidden" id="orcamento">
@@ -65,6 +66,8 @@ const CTASection = () => {
       </div>
     </section>
   );
-};
+});
+
+CTASection.displayName = "CTASection";
 
 export default CTASection;

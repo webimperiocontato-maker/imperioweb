@@ -1,10 +1,10 @@
-import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { memo, useMemo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const WhatsAppButton = () => {
+const WhatsAppButton = memo(() => {
   const { t } = useLanguage();
-  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
+  const whatsappMessage = useMemo(() => encodeURIComponent(t("whatsapp.defaultMessage")), [t]);
 
   return (
     <motion.a
@@ -28,6 +28,8 @@ const WhatsAppButton = () => {
       </svg>
     </motion.a>
   );
-};
+});
+
+WhatsAppButton.displayName = "WhatsAppButton";
 
 export default WhatsAppButton;

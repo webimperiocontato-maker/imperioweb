@@ -1,12 +1,13 @@
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { memo, useMemo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const MiniCasesSection = () => {
+const MiniCasesSection = memo(() => {
   const { t } = useLanguage();
 
-  const cases = [
+  const cases = useMemo(() => [
     {
       situation: t("miniCases.case1Situation"),
       solution: t("miniCases.case1Solution"),
@@ -22,7 +23,7 @@ const MiniCasesSection = () => {
       solution: t("miniCases.case3Solution"),
       benefit: t("miniCases.case3Benefit"),
     },
-  ];
+  ], [t]);
 
   return (
     <section className="section-padding bg-gradient-subtle">
@@ -97,6 +98,8 @@ const MiniCasesSection = () => {
       </div>
     </section>
   );
-};
+});
+
+MiniCasesSection.displayName = "MiniCasesSection";
 
 export default MiniCasesSection;

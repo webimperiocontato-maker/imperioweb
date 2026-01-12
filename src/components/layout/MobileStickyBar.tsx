@@ -1,10 +1,11 @@
 import { MessageCircle, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { memo, useMemo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const MobileStickyBar = () => {
+const MobileStickyBar = memo(() => {
   const { t } = useLanguage();
-  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
+  const whatsappMessage = useMemo(() => encodeURIComponent(t("whatsapp.defaultMessage")), [t]);
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-card/95 backdrop-blur-lg border-t border-border safe-area-bottom">
@@ -38,6 +39,8 @@ const MobileStickyBar = () => {
       </div>
     </div>
   );
-};
+});
+
+MobileStickyBar.displayName = "MobileStickyBar";
 
 export default MobileStickyBar;

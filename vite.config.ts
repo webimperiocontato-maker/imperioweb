@@ -23,5 +23,28 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: "dist",
     assetsDir: "assets",
+    // Optimize chunk splitting
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunks for better caching
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'ui-vendor': ['framer-motion', 'lucide-react'],
+          'radix-vendor': [
+            '@radix-ui/react-accordion',
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-dropdown-menu',
+            '@radix-ui/react-tooltip',
+            '@radix-ui/react-toast',
+          ],
+        },
+      },
+    },
+    // Increase warning limit for larger chunks
+    chunkSizeWarningLimit: 600,
+    // Enable minification
+    minify: 'esbuild',
+    // Target modern browsers for smaller bundle
+    target: 'es2020',
   },
 }));

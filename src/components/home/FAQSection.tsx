@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { memo, useMemo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Accordion,
@@ -7,10 +8,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const FAQSection = () => {
+const FAQSection = memo(() => {
   const { t } = useLanguage();
 
-  const faqs = [
+  const faqs = useMemo(() => [
     { question: t("faq.q1"), answer: t("faq.a1") },
     { question: t("faq.q2"), answer: t("faq.a2") },
     { question: t("faq.q3"), answer: t("faq.a3") },
@@ -23,7 +24,7 @@ const FAQSection = () => {
     { question: t("faq.q10"), answer: t("faq.a10") },
     { question: t("faq.q11"), answer: t("faq.a11") },
     { question: t("faq.q12"), answer: t("faq.a12") },
-  ];
+  ], [t]);
 
   return (
     <section id="faq" className="section-padding">
@@ -71,6 +72,8 @@ const FAQSection = () => {
       </div>
     </section>
   );
-};
+});
+
+FAQSection.displayName = "FAQSection";
 
 export default FAQSection;

@@ -1,13 +1,14 @@
 import { Check, ArrowRight, MessageCircle, Sparkles, Clock, RefreshCw, Headphones, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { memo, useMemo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const PackagesSection = () => {
+const PackagesSection = memo(() => {
   const { t } = useLanguage();
-  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
+  const whatsappMessage = useMemo(() => encodeURIComponent(t("whatsapp.defaultMessage")), [t]);
 
-  const packages = [
+  const packages = useMemo(() => [
     {
       name: t("packages.starterName"),
       description: t("packages.starterDesc"),
@@ -64,9 +65,9 @@ const PackagesSection = () => {
       ],
       highlighted: false,
     },
-  ];
+  ], [t]);
 
-  const comparisonFeatures = [
+  const comparisonFeatures = useMemo(() => [
     { feature: t("packages.compFeature1"), starter: true, growth: true, premium: true },
     { feature: t("packages.compFeature2"), starter: true, growth: true, premium: true },
     { feature: t("packages.compFeature3"), starter: true, growth: true, premium: true },
@@ -80,7 +81,7 @@ const PackagesSection = () => {
     { feature: t("packages.compFeature11"), starter: false, growth: false, premium: true },
     { feature: t("packages.compFeature12"), starter: false, growth: false, premium: true },
     { feature: t("packages.compFeature13"), starter: false, growth: false, premium: true },
-  ];
+  ], [t]);
 
   return (
     <section className="section-padding" id="pacotes">
@@ -264,6 +265,8 @@ const PackagesSection = () => {
       </div>
     </section>
   );
-};
+});
+
+PackagesSection.displayName = "PackagesSection";
 
 export default PackagesSection;

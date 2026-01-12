@@ -1,10 +1,13 @@
+import { memo, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { MapPin, Mail, Phone, Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import logoCrown from "@/assets/logo-crown.png";
 
-const Footer = () => {
+const Footer = memo(() => {
   const { t } = useLanguage();
+
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
 
   return (
     <footer className="bg-card border-t border-border pb-20 md:pb-0">
@@ -107,7 +110,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Império Web. {t("common.rightsReserved")}
+            © {currentYear} Império Web. {t("common.rightsReserved")}
           </p>
           <div className="flex items-center gap-6">
             <span className="text-sm text-muted-foreground">
@@ -121,6 +124,8 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = "Footer";
 
 export default Footer;

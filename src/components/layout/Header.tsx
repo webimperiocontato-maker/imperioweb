@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo, memo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,33 +7,37 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSelector from "@/components/LanguageSelector";
 import logoCrown from "@/assets/logo-crown.png";
 
-const Header = () => {
+const Header = memo(() => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const { t } = useLanguage();
 
-  const whatsappMessage = encodeURIComponent(t("whatsapp.defaultMessage"));
+  const whatsappMessage = useMemo(() => encodeURIComponent(t("whatsapp.defaultMessage")), [t]);
 
-  const navLinks = [
+  const navLinks = useMemo(() => [
     { name: t("common.home"), href: "/" },
     { name: t("common.services"), href: "/servicos" },
     { name: t("common.portfolio"), href: "/portfolio" },
     { name: t("common.about"), href: "/sobre" },
     { name: t("common.contact"), href: "/contacto" },
-  ];
+  ], [t]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
+
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(prev => !prev);
+  }, []);
 
   return (
     <header
@@ -87,7 +91,7 @@ const Header = () => {
           <LanguageSelector />
           <button
             className="p-2 text-foreground"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -133,6 +137,8 @@ const Header = () => {
       </AnimatePresence>
     </header>
   );
-};
+});
+
+Header.displayName = "Header";
 
 export default Header;

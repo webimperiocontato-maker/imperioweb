@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
+import { memo, useMemo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { ClipboardList, Palette, Code, Rocket } from "lucide-react";
 
-const HowItWorksSection = () => {
+const HowItWorksSection = memo(() => {
   const { t } = useLanguage();
 
-  const steps = [
+  const steps = useMemo(() => [
     {
       icon: ClipboardList,
       number: "01",
@@ -30,7 +31,7 @@ const HowItWorksSection = () => {
       title: t("howItWorks.step4Title"),
       description: t("howItWorks.step4Desc"),
     },
-  ];
+  ], [t]);
 
   return (
     <section className="section-padding bg-gradient-subtle">
@@ -104,6 +105,8 @@ const HowItWorksSection = () => {
       </div>
     </section>
   );
-};
+});
+
+HowItWorksSection.displayName = "HowItWorksSection";
 
 export default HowItWorksSection;

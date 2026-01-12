@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useCallback, useMemo, ReactNode } from "react";
 import ptTranslations from "@/locales/pt.json";
 import enTranslations from "@/locales/en.json";
 
@@ -26,17 +26,17 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     return (saved === "en" ? "en" : "pt") as Language;
   });
 
-  const setLanguage = (lang: Language) => {
+  const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem("language", lang);
     document.documentElement.lang = lang === "pt" ? "pt-PT" : "en";
-  };
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = language === "pt" ? "pt-PT" : "en";
   }, [language]);
 
-  const t = (key: string, params?: Record<string, string>): string => {
+  const t = useCallback((key: string, params?: Record<string, string>): string => {
     const keys = key.split(".");
     let value: TranslationValue = translations[language];
 
@@ -70,10 +70,16 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     }
 
     return value;
-  };
+  }, [language]);
+
+  const contextValue = useMemo(() => ({
+    language,
+    setLanguage,
+    t,
+  }), [language, setLanguage, t]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={contextValue}>
       {children}
     </LanguageContext.Provider>
   );

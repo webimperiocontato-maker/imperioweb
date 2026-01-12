@@ -1,24 +1,24 @@
-import { ArrowRight, MessageCircle, Check, Zap, Search, MousePointer, Clock, Headphones } from "lucide-react";
+import { ArrowRight, Check, Zap, Search, MousePointer, Clock, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useMemo, memo } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const HeroSection = () => {
+const HeroSection = memo(() => {
   const { t } = useLanguage();
-  const whatsappMessage = encodeURIComponent(t("whatsapp.meetingMessage"));
 
-  const benefits = [
+  const benefits = useMemo(() => [
     { icon: Search, text: t("heroNew.benefit1") },
     { icon: Zap, text: t("heroNew.benefit2") },
     { icon: MousePointer, text: t("heroNew.benefit3") },
     { icon: Headphones, text: t("heroNew.benefit4") },
-  ];
+  ], [t]);
 
-  const microProofs = [
+  const microProofs = useMemo(() => [
     t("heroNew.microProof1"),
     t("heroNew.microProof2"),
     t("heroNew.microProof3"),
-  ];
+  ], [t]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -122,6 +122,8 @@ const HeroSection = () => {
       </div>
     </section>
   );
-};
+});
+
+HeroSection.displayName = "HeroSection";
 
 export default HeroSection;
