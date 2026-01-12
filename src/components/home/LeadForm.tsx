@@ -18,13 +18,16 @@ const LeadForm = ({ variant = "default", className = "" }: LeadFormProps) => {
     contact: "",
     businessType: "",
     objective: "",
+    notes: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     const objectiveText = formData.objective || (language === "pt" ? "Não especificado" : "Not specified");
-    const whatsappFormMessage = `${language === "pt" ? "Olá! Quero pedir um orçamento." : "Hello! I want to request a quote."}%0A%0A${language === "pt" ? "Nome" : "Name"}: ${formData.name}%0A${language === "pt" ? "Contacto" : "Contact"}: ${formData.contact}%0A${language === "pt" ? "Tipo de negócio" : "Business type"}: ${formData.businessType}%0A${language === "pt" ? "Objetivo" : "Objective"}: ${objectiveText}`;
+    const clientMessage = language === "pt" ? "Gostava de contratar um serviço." : "I would like to hire a service.";
+    const notesText = formData.notes.trim() ? `%0A%0A${formData.notes.trim()}` : "";
+    const whatsappFormMessage = `${clientMessage}${notesText}%0A%0A${language === "pt" ? "Nome" : "Name"}: ${formData.name}%0A${language === "pt" ? "Contacto" : "Contact"}: ${formData.contact}%0A${language === "pt" ? "Tipo de negócio" : "Business type"}: ${formData.businessType}%0A${language === "pt" ? "Plano" : "Plan"}: ${objectiveText}`;
     
     window.open(`https://wa.me/351920804088?text=${whatsappFormMessage}`, "_blank");
     
@@ -33,7 +36,7 @@ const LeadForm = ({ variant = "default", className = "" }: LeadFormProps) => {
       description: t("leadForm.toastDescription"),
     });
 
-    setFormData({ name: "", contact: "", businessType: "", objective: "" });
+    setFormData({ name: "", contact: "", businessType: "", objective: "", notes: "" });
   };
 
   const isCompact = variant === "compact";
@@ -95,12 +98,26 @@ const LeadForm = ({ variant = "default", className = "" }: LeadFormProps) => {
             className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none text-foreground text-sm"
             required
           >
-            <option value="">{t("leadForm.objectivePlaceholder")}</option>
-            <option value={t("leadForm.objectiveLeads")}>{t("leadForm.objectiveLeads")}</option>
-            <option value={t("leadForm.objectiveBookings")}>{t("leadForm.objectiveBookings")}</option>
-            <option value={t("leadForm.objectiveSales")}>{t("leadForm.objectiveSales")}</option>
+            <option value="">{t("leadForm.planPlaceholder")}</option>
+            <option value={t("leadForm.planEssential")}>{t("leadForm.planEssential")}</option>
+            <option value={t("leadForm.planProfessional")}>{t("leadForm.planProfessional")}</option>
+            <option value={t("leadForm.planPremium")}>{t("leadForm.planPremium")}</option>
           </select>
         </div>
+      </div>
+
+      <div>
+        <textarea
+          value={formData.notes}
+          onChange={(e) => setFormData({ ...formData, notes: e.target.value.slice(0, 1000) })}
+          className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none text-foreground placeholder:text-muted-foreground text-sm resize-none"
+          placeholder={t("leadForm.notesPlaceholder")}
+          rows={3}
+          maxLength={1000}
+        />
+        <p className="text-xs text-muted-foreground text-right mt-1">
+          {formData.notes.length}/1000
+        </p>
       </div>
 
       <Button type="submit" variant="hero" size="lg" className="w-full">
